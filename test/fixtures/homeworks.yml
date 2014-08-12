@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  link_to_homework: MyString
+  finished?: false
+  assignment: MyString
+  help: MyString
+
+two:
+  link_to_homework: MyString
+  finished?: false
+  assignment: MyString
+  help: MyString
