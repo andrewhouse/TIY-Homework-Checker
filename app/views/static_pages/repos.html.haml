@@ -1,0 +1,28 @@
+-@users.each do |user|
+  .panel-group#accordion
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title
+          %a{data: {toggle: 'collapse', parent: 'accordion'}, href: "#collapse#{user.id}"}
+            = "#{user[:first_name]} #{user[:last_name]}'s Repositories"
+      -if @repos
+        %div{ id: "collapse#{user.id}", class: "panel-collapse collapse in" }
+          .panel-body
+            %table.table.table-bordered.table-striped
+              %thead
+                %tr
+                  %th Name
+                  %th Size
+                  %th Description
+                  %th Created At
+                  %th Updated At
+              %tbody
+                -@repos.each do |repo|
+                  %tr
+                    %td
+                      %a{href: repo["html_url"]}
+                        =repo['name']
+                    %td= repo['size']
+                    %td= repo['description']
+                    %td= repo['created_at']
+                    %td= repo['updated_at']

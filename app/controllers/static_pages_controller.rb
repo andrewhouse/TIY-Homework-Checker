@@ -1,4 +1,7 @@
 class StaticPagesController < ApplicationController
+  before_action :set_users, only: [:blogs, :repos]
+  require 'github.rb'
+
   def home
   end
 
@@ -12,6 +15,17 @@ class StaticPagesController < ApplicationController
   end
 
   def blogs
+  end
+
+  def repos
+    @users.each do |user|
+      @repos = Github.repos_for(user[:gh_name])
+    end
+  end
+
+  private
+
+  def set_users
     @users = User.all
   end
 end
