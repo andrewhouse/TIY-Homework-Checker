@@ -24,3 +24,8 @@ footer { position: fixed; bottom:0px;}
   text-align: center;
   width: 60%;
 }
+
+.brand:hover {
+  background: lightblue;
+  border-radius: 55%;
+}
