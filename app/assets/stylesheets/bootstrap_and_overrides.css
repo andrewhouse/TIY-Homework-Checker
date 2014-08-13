@@ -16,9 +16,7 @@
   margin-right: 5%
 }
 
-footer {
-  bottom: 0;
-}
+footer { position: fixed; bottom:0px;}
 
 .panel {
   margin: auto;
