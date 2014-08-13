@@ -10,19 +10,19 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'unicorn'
 gem 'devise'
-gem 'erb2haml' #rake haml:replace_erbs
 gem 'haml-rails'
 gem 'figaro'
 gem 'simple_form'
 gem 'twitter-bootstrap-rails'
-gem 'pry'
-gem 'pry-byebug'
 gem 'httparty'
 
 group :development do
   gem 'quiet_assets'
   gem 'spring'
   gem 'sqlite3'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'erb2haml' #rake haml:replace_erbs
 end
 
 group :production do
