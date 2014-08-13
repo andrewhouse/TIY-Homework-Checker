@@ -1,0 +1,27 @@
+- model_class = Homework
+.page-header
+  %h1=t '.title', :default => "All Homework"
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name("Owner")
+      %th= model_class.human_attribute_name(:assignment)
+      %th= model_class.human_attribute_name(:finished?)
+      %th= model_class.human_attribute_name(:help)
+      %th= model_class.human_attribute_name(:created_at)
+  %tbody
+    - @homeworks.each do |homework|
+      -unless homework.finished?
+        %tr
+          %td= link_to "#{homework.user[:first_name]} #{homework.user[:last_name]}", homework_path(homework)
+          %td= link_to homework.assignment, homework.link_to_homework
+          -if homework.finished?
+            %td
+              %span.label.label-success
+                Complete
+          -else
+            %td
+              %span.label.label-warning
+                Incomplete
+          %td= homework.help
+          %td=l homework.created_at.to_date

@@ -1,0 +1,27 @@
+.navbar.navbar-fluid-top
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand(href=root_path) Homework Checker
+      .container.nav-collapse.pull-right
+        %ul#nav.nav.nav-tabs
+          %li= link_to "Home", root_path
+          %li= link_to "Blogs", static_pages_blogs_path
+          %li= link_to "About", static_pages_about_path
+          %li= link_to "Contact", static_pages_contact_path
+          %li.dropdown
+            %a.dropdown-toggle{data: {:toggle => 'dropdown'} }
+              Menu
+              %span.caret
+              %ul.dropdown-menu.pull-right
+                -if signed_in?
+                  %li= link_to "Send Homework Notification", new_homework_path
+                %li= link_to "View All Homework", homeworks_path
+                %li= link_to "Completed Assignments", complete_path
+                %li= link_to "Incomplete Assignments", incomplete_path
+                %li.divider
+                  = render 'devise/menu/registration_items'
+                  = render 'devise/menu/login_items'

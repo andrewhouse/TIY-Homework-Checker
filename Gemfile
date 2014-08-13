@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'pry'
 gem 'rails', '4.1.1'
 gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.3'
@@ -20,3 +19,4 @@ gem 'figaro'
 gem 'simple_form'
 gem 'twitter-bootstrap-rails'
 gem 'pry'
+gem 'quiet_assets', group: :development

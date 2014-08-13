@@ -1,0 +1,8 @@
+-@users.sort_by{ |user| user[:first_name] }.each do |user|
+  -if user.blog
+    .panel.panel-success.well
+      .panel-heading
+        %h3.panel-title
+          ="#{user.first_name} #{user.last_name}"
+      .panel-body
+        %h4= link_to "#{user.blog}", user.blog
