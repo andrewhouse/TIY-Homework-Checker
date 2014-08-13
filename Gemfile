@@ -9,9 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
 gem 'unicorn'
-gem 'capistrano-rails', group: :development
 gem 'devise'
 gem 'erb2haml' #rake haml:replace_erbs
 gem 'haml-rails'
@@ -19,4 +17,14 @@ gem 'figaro'
 gem 'simple_form'
 gem 'twitter-bootstrap-rails'
 gem 'pry'
-gem 'quiet_assets', group: :development
+
+group :development do
+  gem 'quiet_assets'
+  gem 'capistrano-rails'
+  gem 'spring'
+end
+
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
