@@ -5,4 +5,7 @@
         %h3.panel-title
           ="#{user.first_name} #{user.last_name}"
       .panel-body
-        %h4= link_to "#{user.blog}", user.blog
+        -if user.blog.include?('http://')
+          %h4= link_to "#{user.blog.gsub('http://', "")}", user.blog
+        -else
+          %h4= link_to "#{user.blog}", "http://#{user.blog}"
