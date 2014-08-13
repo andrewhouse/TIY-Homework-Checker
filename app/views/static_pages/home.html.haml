@@ -6,3 +6,7 @@
   %p
     %a{class: 'btn btn-primary btn-lg', role: 'button', href: homeworks_path}
       To The Homework!
+  -unless signed_in?
+    %p
+      %a{class: 'btn btn-warning btn-lg', role: 'button', href: new_user_registration_path}
+        Register!
