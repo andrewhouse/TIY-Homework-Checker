@@ -5,17 +5,17 @@ Rails.application.routes.draw do
 
   resources :homeworks
 
-  get 'static_pages/home', to: 'static_pages#home', as: :home
+  get 'home', to: 'static_pages#home', as: :home
 
-  get 'static_pages/about'
+  get 'about', to: 'static_pages#about', as: :about
 
-  get 'static_pages/help'
+  get 'help', to: 'static_pages#help', as: :help
 
-  get 'static_pages/contact'
+  get 'contact', to: 'static_pages#contact', as: :contact
 
-  get 'static_pages/blogs'
+  get 'blogs', to: 'static_pages#blogs', as: :blogs
 
-  get 'static_pages/repos'
+  get 'repos', to: 'static_pages#repos', as: :repos
 
 
   devise_for :users

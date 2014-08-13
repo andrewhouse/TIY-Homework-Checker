@@ -9,10 +9,10 @@
       .container.nav-collapse.pull-right
         %ul#nav.nav.nav-tabs
           %li= link_to "Home", root_path
-          %li= link_to "Blogs", static_pages_blogs_path
-          %li= link_to 'Repos', static_pages_repos_path
-          %li= link_to "About", static_pages_about_path
-          %li= link_to "Contact", static_pages_contact_path
+          %li= link_to "Blogs", blogs_path
+          %li= link_to 'Repos', repos_path
+          %li= link_to "About", about_path
+          %li= link_to "Contact", contact_path
           %li.dropdown
             %a.dropdown-toggle{data: {:toggle => 'dropdown'} }
               Menu
