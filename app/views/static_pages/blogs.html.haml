@@ -6,6 +6,8 @@
           ="#{user.first_name} #{user.last_name}"
       .panel-body
         -if user.blog.include?('http://')
-          %h4= link_to "#{user.blog.gsub('http://', "")}", user.blog
+          %h4.btn.btn-info
+            = link_to "#{user.blog.gsub('http://', "")}", user.blog
         -else
-          %h4= link_to "#{user.blog}", "http://#{user.blog}"
+          %h4.btn.btn-info
+            = link_to "#{user.blog}", "http://#{user.blog}"
