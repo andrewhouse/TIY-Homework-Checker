@@ -20,7 +20,6 @@ gem 'pry'
 
 group :development do
   gem 'quiet_assets'
-  gem 'capistrano-rails'
   gem 'spring'
 end
 
