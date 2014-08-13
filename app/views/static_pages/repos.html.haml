@@ -3,10 +3,10 @@
     .panel.panel-default
       .panel-heading
         %h4.panel-title
-          %a{data: {toggle: 'collapse', parent: 'accordion'}, href: "#collapse#{user.id}"}
+          %a{data: {class: 'coll', toggle: 'collapse', parent: 'accordion'}, href: "#collapse#{user.id}"}
             = "#{user[:first_name]} #{user[:last_name]}'s Repositories"
       -if @repos
-        %div{ id: "collapse#{user.id}", class: "panel-collapse collapse in" }
+        %div{ id: "collapse#{user.id}", class: "panel-collapse collapse" }
           .panel-body
             %table.table.table-bordered.table-striped
               %thead
@@ -17,12 +17,14 @@
                   %th Created At
                   %th Updated At
               %tbody
-                -@repos.each do |repo|
-                  %tr
-                    %td
-                      %a{href: repo["html_url"]}
-                        =repo['name']
-                    %td= repo['size']
-                    %td= repo['description']
-                    %td= repo['created_at']
-                    %td= repo['updated_at']
+                -@repos.each do |array_of_repos|
+                  -array_of_repos.each do |repo|
+                    -if repo["owner"]["login"] == user[:gh_name]
+                      %tr
+                        %td
+                          %a{href: repo["html_url"]}
+                            =repo['name']
+                        %td= repo['size']
+                        %td= repo['description']
+                        %td= repo['created_at']
+                        %td= repo['updated_at']

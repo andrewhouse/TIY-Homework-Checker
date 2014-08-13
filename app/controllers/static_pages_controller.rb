@@ -18,8 +18,9 @@ class StaticPagesController < ApplicationController
   end
 
   def repos
+    @repos = []
     @users.each do |user|
-      @repos = Github.repos_for(user[:gh_name])
+      @repos << Github.repos_for(user[:gh_name])
     end
   end
 

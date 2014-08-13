@@ -16,6 +16,7 @@ gem 'figaro'
 gem 'simple_form'
 gem 'twitter-bootstrap-rails'
 gem 'pry'
+gem 'pry-byebug'
 gem 'httparty'
 
 group :development do
