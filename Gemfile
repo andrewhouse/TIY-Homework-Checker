@@ -23,6 +23,9 @@ group :development do
   gem 'pry'
   gem 'pry-byebug'
   gem 'erb2haml' #rake haml:replace_erbs
+  gem 'annotate' # adds reference schema comments to model
+  gem 'better_errors' # makes the error page on browser much more efficient
+  gem 'binding_of_caller' # adds a binding.pry ish session on errors in browser
 end
 
 group :production do
