@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :assignments
+
   get 'incomplete', to: 'homeworks#incomplete', as: :incomplete
   get 'complete', to: 'homeworks#complete', as: :complete
 

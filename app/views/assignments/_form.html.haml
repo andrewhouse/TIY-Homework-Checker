@@ -1,0 +1,9 @@
+= simple_form_for(@assignment) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :date
+    = f.input :description
+
+  .form-actions
+    = f.button :submit

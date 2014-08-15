@@ -1,0 +1,21 @@
+%h1 Listing assignments
+
+%table
+  %tr
+    %th Date
+    %th Description
+    %th
+    %th
+    %th
+
+  - @assignments.each do |assignment|
+    %tr
+      %td= assignment.date
+      %td= assignment.description
+      %td= link_to 'Show', assignment
+      %td= link_to 'Edit', edit_assignment_path(assignment)
+      %td= link_to 'Destroy', assignment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Assignment', new_assignment_path

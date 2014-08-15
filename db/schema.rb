@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812195948) do
+ActiveRecord::Schema.define(version: 20140815200033) do
+
+  create_table "assignments", force: true do |t|
+    t.string   "date"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "homeworks", force: true do |t|
     t.string   "link_to_homework"
     t.boolean  "finished"
-    t.string   "assignment"
     t.string   "help"
     t.datetime "created_at"
     t.datetime "updated_at"

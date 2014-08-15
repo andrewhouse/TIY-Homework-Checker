@@ -3,7 +3,6 @@ class CreateHomeworks < ActiveRecord::Migration
     create_table :homeworks do |t|
       t.string :link_to_homework
       t.boolean :finished
-      t.string :assignment
       t.string :help
 
       t.timestamps
