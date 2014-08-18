@@ -9,26 +9,28 @@
       .container.nav-collapse.pull-right
         %ul#nav.nav.nav-tabs
           %li= link_to "Home", root_path
-          -if signed_in?
-            %li= link_to "View All Homework", homeworks_path
           %li= link_to "Blogs", blogs_path
           %li= link_to 'Repos', repos_path
           %li= link_to "About", about_path
           %li= link_to "Contact", contact_path
-          %li= link_to "My Assignments", mine_path
           -if current_user.try(:admin?)
             %li= link_to "Post New Assignment", new_assignment_path
             %li= link_to "View All Assignments", assignments_path
           %li.dropdown
             %a.dropdown-toggle{data: {:toggle => 'dropdown'} }
-              Menu
+              Homework
               %span.caret
               %ul.dropdown-menu.pull-right
                 -if signed_in?
                   %li= link_to "Update Homework Progress", new_homework_path
                 %li= link_to "View All Homework", homeworks_path
+                %li= link_to "My Assignments", mine_path
                 %li= link_to "Completed Assignments", complete_path
                 %li= link_to "Incomplete Assignments", incomplete_path
-                %li.divider
+            %li.dropdown
+              %a.dropdown-toggle{data: {:toggle => 'dropdown'} }
+                User Info
+                %span.caret
+                %ul.dropdown-menu.pull-right
                   = render 'devise/menu/registration_items'
                   = render 'devise/menu/login_items'
