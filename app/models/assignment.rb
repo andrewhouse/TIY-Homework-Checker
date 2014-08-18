@@ -12,4 +12,8 @@
 class Assignment < ActiveRecord::Base
   has_many :homeworks
   has_many :users, through: :homeworks
+
+  def description_with_date
+    "#{self.date}: #{self.description}"
+  end
 end

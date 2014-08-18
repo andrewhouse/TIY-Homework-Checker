@@ -85,7 +85,7 @@ class HomeworksController < ApplicationController
   end
 
   def set_assignments
-    @assignments = Assignment.all.reverse.map { |assignment| "#{assignment.id} - #{assignment.date}: #{assignment.description}" }
+    @assignments = Assignment.all.reverse #.map { |assignment| [assignment.id, "#{assignment.date}: #{assignment.description}"] }
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
