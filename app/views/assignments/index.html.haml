@@ -1,21 +1,21 @@
-%h1 Listing assignments
+%h1 All Assignments
 
-%table
-  %tr
-    %th Date
-    %th Description
-    %th
-    %th
-    %th
-
-  - @assignments.each do |assignment|
+%table.table.table-striped
+  %thead
     %tr
-      %td= assignment.date
-      %td= assignment.description
-      %td= link_to 'Show', assignment
-      %td= link_to 'Edit', edit_assignment_path(assignment)
-      %td= link_to 'Destroy', assignment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Date
+      %th Description
+      %th Destroy Assignment
+
+  %tbody
+    - @assignments.each do |assignment|
+      %tr
+        %td
+          = link_to assignment.date, edit_assignment_path(assignment)
+        %td
+          = link_to assignment.description, edit_assignment_path(assignment)
+        %td= link_to 'Destroy', assignment, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Assignment', new_assignment_path
+%button.btn.btn-info= link_to 'New Assignment', new_assignment_path

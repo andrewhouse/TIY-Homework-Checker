@@ -5,25 +5,22 @@
   %thead
     %tr
       %th= model_class.human_attribute_name("Owner")
-      %th= model_class.human_attribute_name(:assignment)
-      %th= model_class.human_attribute_name(:finished?)
-      %th= model_class.human_attribute_name(:help)
-      %th= model_class.human_attribute_name(:created_at)
+      -@assignments.each do |assignment|
+        %th
+          =assignment.date
   %tbody
     - @homeworks.each do |homework|
       %tr
         %td= link_to "#{homework.user[:first_name]} #{homework.user[:last_name]}", homework_path(homework)
-        %td= link_to homework.assignment, homework.link_to_homework
-        -if homework.finished?
-          %td
+        %td
+          -if homework.finished?
             %span.label.label-success
-              Complete
-        -else
-          %td
-            %span.label.label-warning
-              Incomplete
-        %td= homework.help
-        %td= homework.created_at.to_date
+              = link_to "Complete", homework.link_to_homework
+          -else
+            %td
+              %span.label.label-warning
+                Incomplete
+
 
 -if user_signed_in?
   = link_to t('.new', :default => t("Post Assignment")), new_homework_path, :class => 'btn btn-primary'

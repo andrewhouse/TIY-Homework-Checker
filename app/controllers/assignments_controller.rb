@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :if_admin
 
   # GET /assignments
   # GET /assignments.json
@@ -65,6 +66,10 @@ class AssignmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
       @assignment = Assignment.find(params[:id])
+    end
+
+    def if_admin
+      redirect_to homeworks_path unless current_user.try(:admin?)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

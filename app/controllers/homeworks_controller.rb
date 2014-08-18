@@ -1,5 +1,6 @@
 class HomeworksController < ApplicationController
   before_action :set_homework, only: [:show, :edit, :update, :destroy]
+  before_action :set_assignments, only: [:new, :edit]
 
   def incomplete
     index
@@ -12,6 +13,7 @@ class HomeworksController < ApplicationController
   # GET /homeworks.json
   def index
     @homeworks = Homework.all
+    @assignments = Assignment.all
   end
 
   # GET /homeworks/1
@@ -74,8 +76,12 @@ class HomeworksController < ApplicationController
       @homework = Homework.find(params[:id])
     end
 
+    def set_assignments
+      @assignments = Assignment.all.reverse.map { |assignment| "#{assignment.date}: #{assignment.description}" }
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def homework_params
-      params.require(:homework).permit(:link_to_homework, :finished, :assignment, :help, :user_id)
+      params.require(:homework).permit(:link_to_homework, :finished, :assignment, :help, :user_id, :assignment_id)
     end
 end
