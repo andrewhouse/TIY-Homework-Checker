@@ -8,19 +8,39 @@
       -@assignments.each do |assignment|
         %th
           =assignment.date
-  %tbody
-    - @homeworks.each do |homework|
-      %tr
-        %td= link_to "#{homework.user[:first_name]} #{homework.user[:last_name]}", homework_path(homework)
-        %td
-          -if homework.finished?
-            %span.label.label-success
-              = link_to "Complete", homework.link_to_homework
-          -else
-            %td
-              %span.label.label-warning
-                Incomplete
 
+
+  %tbody
+    -@users.each do |user|
+      %tr
+        %td
+          = "#{user.first_name} #{user.last_name}"
+        - @assignments.each do |assignment|
+          %td
+            - if user.homework_for(assignment) != nil
+              - if user.homework_for(assignment).finished?
+                %span.label.label-success
+                  = link_to "Ok", user.homework_for(assignment).link_to_homework
+              -else
+                %span.label.label-warning
+                  = link_to "No", user.homework_for(assignment).link_to_homework
 
 -if user_signed_in?
-  = link_to t('.new', :default => t("Post Assignment")), new_homework_path, :class => 'btn btn-primary'
+  = link_to t('.new', :default => t("Post Assignment Status")), new_homework_path, :class => 'btn btn-primary'
+
+
+  -#   %tbody
+  -#     - @homeworks.each do |homework|
+  -#       %tr
+  -#         %td= link_to "#{homework.user[:first_name]} #{homework.user[:last_name]}", homework_path(homework)
+  -#         %td
+  -#           -if homework.finished?
+  -#             %span.label.label-success
+  -#               = link_to "Complete", homework.link_to_homework
+  -#           -else
+  -#             %span.label.label-warning
+  -#               Incomplete
+  -#
+  -#
+  -# -if user_signed_in?
+  -#   = link_to t('.new', :default => t("Post Assignment")), new_homework_path, :class => 'btn btn-primary'

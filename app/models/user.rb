@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :homeworks
   has_many :assignments, through: :homeworks
+
+  def homework_for assignment
+    self.homeworks.where(assignment: assignment.id).first
+  end
 end

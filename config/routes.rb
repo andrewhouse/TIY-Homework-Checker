@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'incomplete', to: 'homeworks#incomplete', as: :incomplete
   get 'complete', to: 'homeworks#complete', as: :complete
+  get 'mine', to: 'homeworks#mine', as: :mine
+
 
 
   resources :homeworks

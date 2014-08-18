@@ -29,3 +29,12 @@ footer { position: fixed; bottom:0px;}
   background: lightblue;
   border-radius: 55%;
 }
+
+.label > a {
+  color: white;
+}
+
+.label > a:hover {
+  background: none;
+  color: black;
+}

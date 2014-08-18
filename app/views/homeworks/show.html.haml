@@ -10,14 +10,6 @@
   %strong= model_class.human_attribute_name(:finished?) + ':'
   %br
   = @homework.finished?
-%p
-  %strong= model_class.human_attribute_name(:assignment) + ':'
-  %br
-  = @homework.assignment
-%p
-  %strong= model_class.human_attribute_name(:help) + ':'
-  %br
-  = @homework.help
 
 .form-actions
   = link_to t('.back', :default => t("Homework Page")), homeworks_path, :class => 'btn'

@@ -14,11 +14,13 @@ class HomeworksController < ApplicationController
   def index
     @homeworks = Homework.all
     @assignments = Assignment.all
+    @users = User.all
   end
 
   # GET /homeworks/1
   # GET /homeworks/1.json
   def show
+    redirect_to homeworks_path unless @homework.user_id == current_user.id
   end
 
   # GET /homeworks/new
@@ -28,6 +30,7 @@ class HomeworksController < ApplicationController
 
   # GET /homeworks/1/edit
   def edit
+    redirect_to homeworks_path unless @homework.user_id == current_user.id
   end
 
   # POST /homeworks
@@ -70,18 +73,23 @@ class HomeworksController < ApplicationController
     end
   end
 
+  def mine
+    index
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_homework
-      @homework = Homework.find(params[:id])
-    end
 
-    def set_assignments
-      @assignments = Assignment.all.reverse.map { |assignment| "#{assignment.date}: #{assignment.description}" }
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_homework
+    @homework = Homework.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def homework_params
-      params.require(:homework).permit(:link_to_homework, :finished, :assignment, :help, :user_id, :assignment_id)
-    end
+  def set_assignments
+    @assignments = Assignment.all.reverse.map { |assignment| "#{assignment.id} - #{assignment.date}: #{assignment.description}" }
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def homework_params
+    params.require(:homework).permit(:link_to_homework, :finished, :assignment, :help, :user_id, :assignment_id)
+  end
 end

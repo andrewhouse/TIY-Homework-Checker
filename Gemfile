@@ -22,6 +22,7 @@ group :development do
   gem 'sqlite3'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'erb2haml' #rake haml:replace_erbs
   gem 'annotate' # adds reference schema comments to model
   gem 'better_errors' # makes the error page on browser much more efficient
