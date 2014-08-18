@@ -3,10 +3,8 @@
     Give a Status Update on your Homework!
   %h3
     Let us know if your homework has been completed. Follow the link and upload the status of your current assignment.
-  %p
-    %a{class: 'btn btn-primary btn-lg', role: 'button', href: homeworks_path}
-      To The Homework!
+  %a{class: 'btn btn-primary btn-lg', role: 'button', href: homeworks_path}
+    To The Homework!
   -unless signed_in?
-    %p
-      %a{class: 'btn btn-warning btn-lg', role: 'button', href: new_user_registration_path}
-        Register!
+    %a{class: 'btn btn-warning btn-lg', role: 'button', href: new_user_registration_path}
+      Register!

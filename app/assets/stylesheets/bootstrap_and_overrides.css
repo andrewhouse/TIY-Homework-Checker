@@ -34,7 +34,23 @@ footer { position: fixed; bottom:0px;}
   color: white;
 }
 
+.label > a:visited {
+  color: white;
+}
+
 .label > a:hover {
   background: none;
   color: black;
+}
+
+.btn:visited{
+  color: white;
+}
+
+.btn{
+  color: white;
+}
+
+a:visited {
+  color: white;
 }

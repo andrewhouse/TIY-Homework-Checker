@@ -19,6 +19,7 @@
               %tbody
                 -@repos.each do |array_of_repos|
                   -array_of_repos.each do |repo|
+                    - break if repo[1] == "Not Found"
                     -if repo["owner"]["login"] == user[:gh_name]
                       %tr
                         %td
