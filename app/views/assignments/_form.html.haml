@@ -1,9 +1,6 @@
-= simple_form_for(@assignment) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :date
-    = f.input :description
-
+= simple_form_for @assignment, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :date
+  = f.input :description
   .form-actions
-    = f.button :submit
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), homeworks_path, :class => 'btn btn-danger'
