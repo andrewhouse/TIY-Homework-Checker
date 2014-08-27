@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
   def homework_for assignment
     self.homeworks.where(assignment: assignment.id).first
   end
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

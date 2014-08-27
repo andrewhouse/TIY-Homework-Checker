@@ -18,4 +18,8 @@ class Homework < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true
   validates :assignment_id, presence: true
+
+  def no_homework_done
+    "Has Not Submitted Homework"
+  end
 end
