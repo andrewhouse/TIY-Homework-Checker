@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   get 'repos', to: 'static_pages#repos', as: :repos
 
+  # get 'users/:id', to: 'users#show', as: :user_show
+
 
   devise_for :users
   root 'static_pages#home'

@@ -17,4 +17,5 @@ class Homework < ActiveRecord::Base
   belongs_to :assignment
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true
+  validates :assignment_id, presence: true
 end

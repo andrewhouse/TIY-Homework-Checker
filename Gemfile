@@ -20,7 +20,6 @@ group :development do
   gem 'quiet_assets'
   gem 'spring'
   gem 'sqlite3'
-  gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'erb2haml' #rake haml:replace_erbs

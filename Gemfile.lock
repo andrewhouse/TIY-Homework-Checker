@@ -208,7 +208,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
-  pry
   pry-byebug
   pry-rails
   quiet_assets

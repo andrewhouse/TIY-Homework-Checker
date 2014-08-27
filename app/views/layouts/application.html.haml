@@ -1,10 +1,10 @@
 !!! 5
-%html(lang="en")
+%html(lang="en"){"ng-app" => ''}
   =render '/layouts/head'
   %body
     = render '/layouts/navbar'
     .container-fluid
-      .span12
+      .span12{"ng-init" => ''}
         = bootstrap_flash
         = yield
 

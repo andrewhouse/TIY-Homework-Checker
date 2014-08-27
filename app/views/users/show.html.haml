@@ -1,0 +1,24 @@
+.page-header
+  %h1 Show
+%table.table.table-striped
+  %thead
+    %tr
+      %th Owner
+      -@assignments.each do |assignment|
+        %th
+          =assignment.date
+
+
+  %tbody
+    %tr
+      %td
+        = "#{@user.first_name} #{@user.last_name}"
+      - @assignments.each do |assignment|
+        %td
+          - if @user.homework_for(assignment) != nil
+            - if @user.homework_for(assignment).finished?
+              %span.label.label-success
+                = link_to "Ok", @user.homework_for(assignment).link_to_homework
+            -else
+              %span.label.label-warning
+                = link_to "No", @user.homework_for(assignment).link_to_homework
