@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818190418) do
+ActiveRecord::Schema.define(version: 20140827185731) do
 
   create_table "assignments", force: true do |t|
-    t.date     "date"
+    t.date     "date",        limit: 255
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20140818190418) do
   create_table "homeworks", force: true do |t|
     t.string   "link_to_homework"
     t.boolean  "finished"
-    t.string   "help"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
