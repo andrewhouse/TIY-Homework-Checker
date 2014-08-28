@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'repos', to: 'static_pages#repos', as: :repos
 
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   root 'static_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

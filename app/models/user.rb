@@ -26,9 +26,11 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   has_many :homeworks
   has_many :assignments, through: :homeworks
+
+  has_many :identities
 
   def homework_for assignment
     self.homeworks.where(assignment: assignment.id).first

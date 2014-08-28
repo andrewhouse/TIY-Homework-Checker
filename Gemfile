@@ -16,6 +16,9 @@ gem 'simple_form'
 gem 'twitter-bootstrap-rails'
 gem 'httparty'
 
+gem 'omniauth'
+gem 'omniauth-github'
+
 group :development do
   gem 'quiet_assets'
   gem 'spring'
@@ -30,6 +33,6 @@ group :development do
 end
 
 group :production do
-	gem 'pg'
-	gem 'rails_12factor'
+  gem 'pg'
+  gem 'rails_12factor'
 end

@@ -16,12 +16,12 @@
 
 one:
   link_to_homework: MyString
-  finished?: false
+  finished: false
   assignment: MyString
   help: MyString
 
 two:
   link_to_homework: MyString
-  finished?: false
+  finished: false
   assignment: MyString
   help: MyString
