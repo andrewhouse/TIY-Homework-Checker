@@ -6,17 +6,10 @@
     = f.input :first_name, required: true, autofocus: true
     = f.input :last_name, required: true
     = f.input :blog, placeholder: "Enter your Blog URL (Don't forget http://)"
-    = f.input :gh_name, placeholder: "Enter Github Name - ex. andrewhouse", label: "Github Name"
     = f.input :email, required: true
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       %p
         Currently waiting confirmation for: #{resource.unconfirmed_email}
-    = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
-    = f.input :password_confirmation, required: false
-    = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
   .form-actions
     = f.button :submit, "Update", :class => 'btn-primary'
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
 = link_to "Back", :back
