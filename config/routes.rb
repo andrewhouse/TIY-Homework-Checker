@@ -19,9 +19,9 @@ Rails.application.routes.draw do
 
   get 'blogs', to: 'static_pages#blogs', as: :blogs
 
-  patch 'blogs', to: 'static_pages#update_blog'
-
   get 'repos', to: 'static_pages#repos', as: :repos
+
+  get 'profile', to:'static_pages#profile', as: :profile
 
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }

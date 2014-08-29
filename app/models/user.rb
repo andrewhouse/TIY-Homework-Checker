@@ -25,6 +25,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  include Gravtastic
+  gravtastic size: '250'
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   has_many :homeworks
@@ -34,5 +36,13 @@ class User < ActiveRecord::Base
 
   def homework_for assignment
     self.homeworks.where(assignment: assignment.id).first
+  end
+
+  def blog_url
+    if blog.include?('http://')
+      blog
+    else
+      "http://#{blog}"
+    end
   end
 end

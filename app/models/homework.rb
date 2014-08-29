@@ -17,4 +17,12 @@ class Homework < ActiveRecord::Base
   belongs_to :assignment
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true
+
+  def url
+    if link_to_homework.include?('http://')
+      link_to_homework
+    else
+      "http://#{link_to_homework}"
+    end
+  end
 end

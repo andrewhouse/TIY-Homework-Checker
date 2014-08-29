@@ -1,10 +1,23 @@
-- model_class = Homework
-.page-header
-  %h1=t '.title', :default => "All Homework"
+.page-header.center
+  %h1
+    ="#{current_user.first_name} #{current_user.last_name}'s Profile Page"
+=image_tag current_user.gravatar_url, class: 'center-block'
+.span5
+  .panel.panel-success.well
+    .panel-heading
+      %h4="#{current_user.first_name} #{current_user.last_name}"
+    .panel-body
+      = current_user.email
+      %h5=link_to current_user.blog, current_user.blog_url
+      %h5
+        = link_to "Github Repo", "http://github.com/#{current_user.gh_name}"
+%br
+%br
+%br
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name("Owner")
+      %th= "#{current_user.first_name}'s Assignments"
       -@assignments.each do |assignment|
         %th
           =assignment.date
@@ -23,8 +36,3 @@
                 -else
                   %span.label.label-warning
                     = link_to "Incomplete", user.homework_for(assignment).url
-
-
-
--if user_signed_in?
-  = link_to t('.new', :default => t("Update Homework Progress")), new_homework_path, :class => 'btn btn-primary'

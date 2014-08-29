@@ -15,6 +15,7 @@ gem 'figaro'
 gem 'simple_form'
 gem 'twitter-bootstrap-rails'
 gem 'httparty'
+gem 'gravtastic'
 
 gem 'omniauth'
 gem 'omniauth-github'

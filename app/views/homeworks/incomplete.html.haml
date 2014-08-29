@@ -20,7 +20,6 @@
             - if user.homework_for(assignment) != nil
               - unless user.homework_for(assignment).finished?
                 %span.label.label-warning
-                  = link_to "Incomplete", user.homework_for(assignment).link_to_homework
-
+                  = link_to "Incomplete", user.homework_for(assignment).url
 -if user_signed_in?
   = link_to t('.new', :default => t("Update Homework Progress")), new_homework_path, :class => 'btn btn-primary'
