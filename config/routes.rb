@@ -19,10 +19,12 @@ Rails.application.routes.draw do
 
   get 'blogs', to: 'static_pages#blogs', as: :blogs
 
+  patch 'blogs', to: 'static_pages#update_blog'
+
   get 'repos', to: 'static_pages#repos', as: :repos
 
 
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
   root 'static_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

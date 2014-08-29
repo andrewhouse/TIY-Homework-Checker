@@ -1,3 +1,7 @@
+-if current_user.blog.blank?
+  %h3 Add Your Blog!
+  = render :partial => "update_blog"
+
 -@users.sort_by{ |user| user[:first_name] }.each do |user|
   -if user.blog
     .panel.panel-success.well

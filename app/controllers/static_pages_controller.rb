@@ -15,6 +15,19 @@ class StaticPagesController < ApplicationController
   end
 
   def blogs
+
+  end
+
+  def update_blog
+    respond_to do |format|
+      if current_user.update_attribute("blog", params[:blog])
+        format.html { redirect_to root_path, notice: 'Homework was successfully updated.' }
+        format.json { render :show, status: :ok, location: current_user }
+      else
+        format.html { render :edit }
+        format.json { render json: current_user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def repos
