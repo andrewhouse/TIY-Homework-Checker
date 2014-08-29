@@ -5,24 +5,26 @@
   %thead
     %tr
       %th= model_class.human_attribute_name("Owner")
-      -@assignments.each do |assignment|
+      -@assignments.sort_by{|a| a.date}.each do |assignment|
         %th
-          =assignment.date
+          =assignment.date.strftime("%m/%d")
+
+
   %tbody
     -@users.each do |user|
-      -if user.id == current_user.id
-        %tr
-          %td
-            = "#{user.first_name} #{user.last_name}"
+      %tr
+        %td
+          =image_tag current_user.gravatar_url, size: '50'
+          %strong= "#{user.first_name} #{user.last_name}"
           - @assignments.each do |assignment|
             %td
               - if user.homework_for(assignment) != nil
                 - if user.homework_for(assignment).finished?
                   %span.label.label-success
-                    = link_to "Complete", user.homework_for(assignment).url
+                    = link_to "Ok", user.homework_for(assignment).url
                 -else
                   %span.label.label-warning
-                    = link_to "Incomplete", user.homework_for(assignment).url
+                    = link_to "No", user.homework_for(assignment).url
 
 
 
