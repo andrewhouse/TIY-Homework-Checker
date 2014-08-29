@@ -5,6 +5,3 @@
     Let us know if your homework has been completed. Follow the link and upload the status of your current assignment.
   %a{class: 'btn btn-primary btn-lg', role: 'button', href: homeworks_path}
     To The Homework!
-  -unless signed_in?
-    %a{class: 'btn btn-warning btn-lg', role: 'button', href: user_omniauth_authorize_path(:github)}
-      Register!

@@ -1,4 +1,4 @@
--if current_user.blog.blank?
+-if current_user.try(:blog)
   %h3 Add Your Blog!
   = render :partial => "update_blog"
 
