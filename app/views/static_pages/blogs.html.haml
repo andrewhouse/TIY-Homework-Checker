@@ -1,6 +1,6 @@
--if current_user.try(:blog)
-  %h3 Add Your Blog!
-  = render :partial => "update_blog"
+-unless current_user.try(:blog)
+  %h3
+    = link_to "Add Your Blog!", edit_user_registration_path, class: 'btn btn-warning btn-lg'
 
 -@users.sort_by{ |user| user[:first_name] }.each do |user|
   -if user.blog
