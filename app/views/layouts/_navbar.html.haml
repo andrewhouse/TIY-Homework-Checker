@@ -33,9 +33,7 @@
                 %li= link_to "Completed Assignments", complete_path
                 %li= link_to "Incomplete Assignments", incomplete_path
             %li.dropdown
-              %a.dropdown-toggle{data: {:toggle => 'dropdown'} }
-                User Info
-                %span.caret
-                %ul.dropdown-menu.pull-right
-                  = render 'devise/menu/registration_items'
-                  = render 'devise/menu/login_items'
+              - if current_user
+                = link_to current_user.email, edit_user_registration_path
+              - else
+                = link_to "Login", user_omniauth_authorize_path(:github)
