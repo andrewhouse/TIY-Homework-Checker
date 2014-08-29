@@ -54,15 +54,3 @@ footer { position: fixed; bottom:0px;}
 a:visited {
   color: white;
 }
-
-.center {
-  text-align:center;
-}
-
-.form-group {
-    text-align: center;
-}
-
-#blog {
-  text-align: center;
-}
