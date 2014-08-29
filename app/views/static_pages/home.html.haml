@@ -6,5 +6,5 @@
   %a{class: 'btn btn-primary btn-lg', role: 'button', href: homeworks_path}
     To The Homework!
   -unless signed_in?
-    %a{class: 'btn btn-warning btn-lg', role: 'button', href: new_user_registration_path}
+    %a{class: 'btn btn-warning btn-lg', role: 'button', href: user_omniauth_authorize_path(:github)}
       Register!
