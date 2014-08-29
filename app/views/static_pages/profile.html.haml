@@ -6,6 +6,7 @@
   .panel.panel-success.well
     .panel-heading
       %h4="#{current_user.first_name} #{current_user.last_name}"
+      %hr
     .panel-body
       %h5= current_user.email
       %h5=link_to current_user.blog, current_user.blog_url
