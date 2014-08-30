@@ -16,3 +16,9 @@
 @import 'base/grid-settings';
 @import 'neat';
 @import 'base/base';
+
+div.container {
+  @include outer-container;
+}
+
+@import 'nav';
