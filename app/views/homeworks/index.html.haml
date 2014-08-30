@@ -14,7 +14,7 @@
     -@users.each do |user|
       %tr
         %td
-          =image_tag current_user.gravatar_url, size: '50'
+          =image_tag user.gravatar_url, size: '50'
           %strong= "#{user.first_name} #{user.last_name}"
         - @assignments.each do |assignment|
           %td

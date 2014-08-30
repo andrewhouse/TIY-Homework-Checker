@@ -12,19 +12,20 @@
 
   %tbody
     -@users.each do |user|
-      %tr
-        %td
-          =image_tag current_user.gravatar_url, size: '50'
-          %strong= "#{user.first_name} #{user.last_name}"
-          - @assignments.each do |assignment|
-            %td
-              - if user.homework_for(assignment) != nil
-                - if user.homework_for(assignment).finished?
-                  %span.label.label-success
-                    = link_to "Ok", user.homework_for(assignment).url
-                -else
-                  %span.label.label-warning
-                    = link_to "No", user.homework_for(assignment).url
+      -if user == current_user
+        %tr
+          %td
+            =image_tag current_user.gravatar_url, size: '50'
+            %strong= "#{user.first_name} #{user.last_name}"
+            - @assignments.each do |assignment|
+              %td
+                - if user.homework_for(assignment) != nil
+                  - if user.homework_for(assignment).finished?
+                    %span.label.label-success
+                      = link_to "Ok", user.homework_for(assignment).url
+                  -else
+                    %span.label.label-warning
+                      = link_to "No", user.homework_for(assignment).url
 
 
 
