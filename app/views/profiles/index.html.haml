@@ -1,0 +1,12 @@
+%h1 Listing profiles
+
+%table
+  %tr
+    %th
+
+
+  - @profiles.each do |profile|
+    %tr
+      %td= link_to 'Show', profile
+
+%br

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :profiles, only:[:index, :show]
+
   resources :assignments
 
   get 'incomplete', to: 'homeworks#incomplete', as: :incomplete
@@ -21,7 +23,7 @@ Rails.application.routes.draw do
 
   get 'repos', to: 'static_pages#repos', as: :repos
 
-  get 'profile', to:'static_pages#profile', as: :profile
+  get 'profile', to:'static_pages#profile', as: :profile_solo
 
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
