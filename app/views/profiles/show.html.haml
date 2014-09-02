@@ -1,6 +1,32 @@
-%p#notice= notice
+.span4=image_tag @profile.user.gravatar_url, class: 'center-block'
+.span5
+  .panel.panel-success.well
+    .panel-heading
+      %h4="#{@profile.user.first_name} #{@profile.user.last_name}"
+      %hr
+    .panel-body
+      %h5= @profile.user.email
+      %h5=link_to @profile.user.blog, @profile.user.blog_url
+      %h5
+        = link_to "Github Repo", "http://github.com/#{@profile.user.gh_name}"
 
-
-= link_to 'Edit', edit_profile_path(@profile)
-\|
-= link_to 'Back', profiles_path
+%table.table.table-striped
+  %thead
+    %tr
+      %th= "#{@profile.user.first_name}'s Assignments"
+      -@assignments.sort_by{|a| a.date}.each do |assignment|
+        %th
+          =assignment.date.strftime("%m/%d")
+  %tbody
+    %tr
+      %td
+        = "#{@profile.user.first_name} #{@profile.user.last_name}"
+      - @assignments.each do |assignment|
+        %td
+          - if @profile.user.homework_for(assignment) != nil
+            - if @profile.user.homework_for(assignment).finished?
+              %span.label.label-success
+                = link_to "Ok", @profile.user.homework_for(assignment).url
+            -else
+              %span.label.label-warning
+                = link_to "No", @profile.user.homework_for(assignment).url

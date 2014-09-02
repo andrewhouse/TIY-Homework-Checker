@@ -1,12 +1,5 @@
-%h1 Listing profiles
-
-%table
-  %tr
-    %th
-
-
-  - @profiles.each do |profile|
-    %tr
-      %td= link_to 'Show', profile
-
+- @profiles.each do |profile|
+  .span3
+    = link_to image_tag(profile.user.gravatar_url), profile
+    %h3= link_to profile.user.name, profile
 %br

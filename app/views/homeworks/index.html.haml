@@ -15,7 +15,7 @@
       %tr
         %td
           =image_tag user.gravatar_url, size: '50'
-          %strong= "#{user.first_name} #{user.last_name}"
+          = link_to "#{user.first_name} #{user.last_name}", profile_path(user.profile)
         - @assignments.each do |assignment|
           %td
             - if user.homework_for(assignment) != nil

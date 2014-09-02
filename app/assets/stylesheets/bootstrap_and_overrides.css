@@ -63,3 +63,17 @@ a:visited {
   margin-left: 20%;
   margin-bottom: 5%;
 }
+
+.user {
+  display:none;
+}
+
+.users:hover {
+  text-decoration: none;
+  color: blue;
+  display: block;
+}
+
+.span3 {
+  margin: 5% 0 0 5%;
+}

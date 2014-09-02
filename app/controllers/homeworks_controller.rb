@@ -12,9 +12,9 @@ class HomeworksController < ApplicationController
   # GET /homeworks
   # GET /homeworks.json
   def index
-    @homeworks = Homework.all
-    @assignments = Assignment.all
-    @users = User.all
+    @homeworks = Homework.all.includes(:assignments, :users)
+    @assignments = Assignment.all.includes(:users, :homeworks)
+    @users = User.all.includes(:homeworks, :assignments)
   end
 
   # GET /homeworks/1
