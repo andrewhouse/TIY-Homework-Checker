@@ -1,6 +1,6 @@
 = simple_form_for @homework, :html => { :class => 'form-horizontal' } do |f|
   .form-inputs
-    = f.input :link_to_homework, placeholder: "URL to Homework Assignment", required: true, label: "Homework Link (Please Use http://)"
+    = f.input :link_to_homework, placeholder: "URL to Homework Assignment", required: true
     = f.input :finished, as: :boolean, checked_value: true, unchecked_value: false, label: "Are you Finished? (Check for Yes)"
     = f.association :assignment, collection: @assignments, label_method: :description_with_date, required: true
     .form-actions
