@@ -1,12 +1,11 @@
 !!! 5
 %html(lang="en")
-  =render '/layouts/head'
+  = render '/layouts/head'
   %body
     = render '/layouts/navbar'
-    .container-fluid
-      .span12
-        = bootstrap_flash
-        = yield
+    .container
+      / FIXME: = bootstrap_flash
+      = yield
 
-        %footer
-          %p &copy; Andrew House - The Iron Yard 2014
+      %footer
+        %p &copy; Andrew House - The Iron Yard 2014

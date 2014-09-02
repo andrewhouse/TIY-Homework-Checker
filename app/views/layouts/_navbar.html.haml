@@ -1,41 +1,35 @@
-.navbar.navbar-fluid-top
-  .navbar-inner
-    .container-fluid
-      %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.brand(href=root_path) The Iron Yard - Homework
-      .container.nav-collapse.pull-right
-        %ul#nav.nav.nav-tabs
-          %li= link_to "Home", root_path
-          %li= link_to "Blogs", blogs_path
-          %li= link_to 'Repos', repos_path
-          %li= link_to "About", about_path
-          %li= link_to "Contact", contact_path
-          -if signed_in?
-            %li= link_to 'Profile', profile_path(current_user.profile)
-          -if current_user.try(:admin?)
-            %li.dropdown
-              %a.dropdown-toggle{data: {:toggle => 'dropdown'} }
-                Assignments
-                %span.caret
-                %ul.dropdown-menu.pull-right
-                  %li= link_to "Post New Assignment", new_assignment_path
-                  %li= link_to "View All Assignments", assignments_path
-          %li.dropdown
-            %a.dropdown-toggle{data: {:toggle => 'dropdown'} }
-              Homework
-              %span.caret
-              %ul.dropdown-menu.pull-right
-                -if signed_in?
-                  %li= link_to "Update Homework Progress", new_homework_path
-                %li= link_to "View All Homework", homeworks_path
-                %li= link_to "My Assignments", mine_path
-                %li= link_to "Completed Assignments", complete_path
-                %li= link_to "Incomplete Assignments", incomplete_path
-            %li.dropdown
-              - if current_user
-                = link_to current_user.email, edit_user_registration_path
-              - else
-                = link_to "Login", user_omniauth_authorize_path(:github)
+%header.navigation
+  .navigation-wrapper
+    = link_to root_path, class: "logo" do
+      %img{:alt => "", :src => "http://theironyard.com/images/iron-yard-logo.svg"}
+    %a#js-mobile-menu.navigation-menu-button{:href => ""} MENU
+    .nav
+      %ul#navigation-menu
+        %li.nav-link= link_to "Blogs", blogs_path
+        %li.nav-link= link_to "Repos", repos_path
+
+        - if current_user.try(:admin?)
+          %li.nav-link.more
+            %a{:href => "javascript:void(0)"} Assignments
+            %ul.submenu
+              %li= link_to "Post New", new_assignment_path
+              %li= link_to "View All", assignments_path
+
+        %li.nav-link.more
+          %a{:href => "javascript:void(0)"} Homework
+          %ul.submenu
+            - if signed_in?
+              %li= link_to "Update Homework Progress", new_homework_path
+            %li= link_to "View All", homeworks_path
+            %li= link_to "My Assignments", mine_path
+            %li= link_to "Completed", complete_path
+            %li= link_to "Incomplete", incomplete_path
+
+        / NB - rolled the about and contact pages into one, since there isn't much need for both
+        %li.nav-link= link_to "About", about_path
+
+    .navigation-tools
+      - if current_user
+        = link_to current_user.email, edit_user_registration_path, class: "sign-up"
+      - else
+        = link_to "Login", user_omniauth_authorize_path(:github), class: "sign-up"
