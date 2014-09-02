@@ -2,13 +2,6 @@ class HomeworksController < ApplicationController
   before_action :set_homework, only: [:show, :edit, :update, :destroy]
   before_action :set_assignments, only: [:new, :edit]
 
-  def incomplete
-    index
-  end
-
-  def complete
-    index
-  end
   # GET /homeworks
   # GET /homeworks.json
   def index
@@ -71,10 +64,6 @@ class HomeworksController < ApplicationController
       format.html { redirect_to homeworks_url, notice: 'Homework was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def mine
-    index
   end
 
   private
