@@ -1,3 +1,4 @@
+-# TODO make get rid of bootstrap stylings and use bourbon
 .span4=image_tag @profile.user.gravatar_url, class: 'center-block'
 .span5
   .panel.panel-success.well
@@ -13,20 +14,28 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= "#{@profile.user.first_name}'s Assignments"
-      -@assignments.sort_by{|a| a.date}.each do |assignment|
-        %th
-          =assignment.date.strftime("%m/%d")
+      %th
+      %th
+      %th
+      %th
   %tbody
-    %tr
-      %td
-        = "#{@profile.user.first_name} #{@profile.user.last_name}"
-      - @assignments.each do |assignment|
+    -@assignments.sort_by{|a| a.date}.each do |assignment|
+      %tr
+        %td
+          =link_to assignment.date.strftime("%m/%d"), assignment_path(assignment)
         %td
           - if @profile.user.homework_for(assignment) != nil
             - if @profile.user.homework_for(assignment).finished?
               %span.label.label-success
-                = link_to "Ok", @profile.user.homework_for(assignment).url
+                = link_to "Finished", @profile.user.homework_for(assignment).url
             -else
               %span.label.label-warning
-                = link_to "No", @profile.user.homework_for(assignment).url
+                = link_to "Incomplete", @profile.user.homework_for(assignment).url
+        -if @profile.user == current_user && !@profile.user.homework_for(assignment).blank?
+          %td
+            =link_to "Description", homework_path(@profile.user.homework_for(assignment).id)
+          %td
+            =link_to "Edit", edit_homework_path(@profile.user.homework_for(assignment))
+        -else
+          %td
+          %td
