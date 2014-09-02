@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
   resources :assignments
 
-  get 'incomplete', to: 'homeworks#incomplete', as: :incomplete
-  get 'complete', to: 'homeworks#complete', as: :complete
-  get 'mine', to: 'homeworks#mine', as: :mine
-
   resources :homeworks
 
   # NB - this is a convenient way to declare lots of routes with a similar pattern
