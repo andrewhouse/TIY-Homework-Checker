@@ -11,13 +11,12 @@ class StaticPagesController < ApplicationController
   def help
   end
 
-  def contact
-  end
-
   def blogs
-
   end
 
+  # NB - It's a little weird to see non-static pages in this controller (that is, anything that reads from the
+  # database like profile below). It's _really_ weird to be updating blogs here. That seems like it should
+  # be on a profile or blog controller - I would never think to look for it here.
   def update_blog
     respond_to do |format|
       if current_user.update_attribute("blog", params[:blog])
