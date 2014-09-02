@@ -22,3 +22,10 @@ div.container {
 }
 
 @import 'nav';
+
+.button {
+  @include button(shiny, #ff0000);
+  @include size(50%);
+  margin: 20%;
+  font-size: 3em;
+}

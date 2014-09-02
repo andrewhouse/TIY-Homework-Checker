@@ -1,7 +1,1 @@
-.jumbotron
-  %h1
-    Give a Status Update on your Homework!
-  %h3
-    Let us know if your homework has been completed. Follow the link and upload the status of your current assignment.
-  %a{class: 'btn btn-primary btn-lg', role: 'button', href: homeworks_path}
-    To The Homework!
+= link_to "Login", user_omniauth_authorize_path(:github), class: "button"

@@ -3,6 +3,9 @@ class StaticPagesController < ApplicationController
   require 'github.rb'
 
   def home
+    if signed_in?
+      redirect_to homeworks_path
+    end
   end
 
   def about
