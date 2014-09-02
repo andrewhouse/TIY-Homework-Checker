@@ -1,3 +1,5 @@
+-# TODO Get Markdown Working, Show all users for just this assignment and their status
+
 %p#notice= notice
 
 %p
@@ -5,7 +7,7 @@
   = @assignment.date
 %p
   %b Description:
-  = @assignment.description
+  = markdown @assignment.description
 
 = link_to 'Edit', edit_assignment_path(@assignment)
 \|

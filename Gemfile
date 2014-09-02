@@ -18,6 +18,7 @@ gem 'figaro'
 gem 'simple_form'
 gem 'httparty'
 gem 'gravtastic'
+gem 'redcarpet'
 
 gem 'omniauth'
 gem 'omniauth-github'

@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
-  before_action :if_admin
+  before_action :if_admin, except: :show
 
   # GET /assignments
   # GET /assignments.json
