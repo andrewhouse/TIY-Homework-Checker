@@ -8,7 +8,7 @@
       %th= model_class.human_attribute_name("Owner")
       -@assignments.sort_by{|a| a.date}.each do |assignment|
         %th
-          =assignment.date.strftime("%m/%d")
+          =link_to assignment.date.strftime("%m/%d"), assignment_path(assignment)
 
 
   %tbody
@@ -23,6 +23,9 @@
               - if user.homework_for(assignment).finished?
                 %span.label.label-success
                   = link_to "Ok", user.homework_for(assignment).url
+                  -# TODO make this not look like shit
+                -if current_user == user
+                  =link_to "Edit", homework_path(user.homework_for(assignment).id)
               -else
                 %span.label.label-warning
                   = link_to "No", user.homework_for(assignment).url

@@ -21,9 +21,6 @@
             - if signed_in?
               %li= link_to "Update Homework Progress", new_homework_path
             %li= link_to "View All", homeworks_path
-            %li= link_to "My Assignments", mine_path
-            %li= link_to "Completed", complete_path
-            %li= link_to "Incomplete", incomplete_path
 
         / NB - rolled the about and contact pages into one, since there isn't much need for both
         %li.nav-link= link_to "About", about_path
