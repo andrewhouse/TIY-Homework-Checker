@@ -27,6 +27,8 @@
 
         / NB - rolled the about and contact pages into one, since there isn't much need for both
         %li.nav-link= link_to "About", about_path
+        -if current_user.try(:profile)
+          %li.nav-link= link_to "Profile", profile_path(current_user.profile.id)
 
     .navigation-tools
       - if current_user

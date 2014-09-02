@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :homeworks
 
   # NB - this is a convenient way to declare lots of routes with a similar pattern
-  %i(home about help blogs repos profile).each do |action|
+  %i(home about help blogs repos).each do |action|
     get action, to: "static_pages##{action}", as: action
   end
 

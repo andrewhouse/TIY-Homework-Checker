@@ -36,11 +36,6 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def profile
-    @homeworks = Homework.all
-    @assignments = Assignment.all
-    @users = User.all
-  end
 
   private
 
