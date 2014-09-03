@@ -174,6 +174,8 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     redcarpet (3.1.2)
+    rollbar (0.13.2)
+      multi_json (~> 1.3)
     ruby_parser (3.1.3)
       sexp_processor (~> 4.1)
     sass (3.2.19)
@@ -248,6 +250,7 @@ DEPENDENCIES
   rails (= 4.1.1)
   rails_12factor
   redcarpet
+  rollbar
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   simple_form

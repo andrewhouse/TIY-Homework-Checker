@@ -23,6 +23,8 @@ gem 'redcarpet'
 gem 'omniauth'
 gem 'omniauth-github'
 
+gem 'rollbar'
+
 group :development do
   gem 'quiet_assets'
   gem 'spring'
