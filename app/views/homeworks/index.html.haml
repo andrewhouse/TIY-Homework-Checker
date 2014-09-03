@@ -26,4 +26,4 @@
                 %span.label.label-warning
                   = link_to "No", homework.url
             - elsif user == current_user
-              = link_to "Update", new_homework_path, class: 'update'
+              = link_to "Update", new_homework_path(form: assignment), class: 'update'

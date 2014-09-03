@@ -26,11 +26,13 @@ class HomeworksController < ApplicationController
   # GET /homeworks/new
   def new
     @homework = current_user.homeworks.new
+    @form = params[:form] || Assignment.last
   end
 
   # GET /homeworks/1/edit
   def edit
     redirect_to homeworks_path unless @homework.user_id == current_user.id
+    @form = params[:form] || Assignment.last
   end
 
   # POST /homeworks
