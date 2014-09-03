@@ -36,6 +36,8 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
+  after_create :create_profile
+
   def homework_for assignment
     self.homeworks.where(assignment: assignment.id).first
   end
@@ -50,5 +52,11 @@ class User < ActiveRecord::Base
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  private
+
+  def create_profile
+    Profile.create(user_id: id)
   end
 end
