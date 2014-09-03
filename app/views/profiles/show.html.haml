@@ -20,22 +20,23 @@
       %th
   %tbody
     -@assignments.sort_by{|a| a.date}.each do |assignment|
+      - homework = @table[@profile.user.id][assignment.id]
       %tr
         %td
           =link_to assignment.date.strftime("%m/%d"), assignment_path(assignment)
         %td
-          - if @profile.user.homework_for(assignment) != nil
-            - if @profile.user.homework_for(assignment).finished?
+          - if homework != nil
+            - if homework.finished?
               %span.label.label-success
-                = link_to "Finished", @profile.user.homework_for(assignment).url
+                = link_to "Finished", homework.url
             -else
               %span.label.label-warning
-                = link_to "Incomplete", @profile.user.homework_for(assignment).url
-        -if @profile.user == current_user && !@profile.user.homework_for(assignment).blank?
+                = link_to "Incomplete", homework.url
+        -if @profile.user == current_user && !homework.blank?
           %td
-            =link_to "Description", homework_path(@profile.user.homework_for(assignment).id)
+            =link_to "Description", homework_path(homework.id)
           %td
-            =link_to "Edit", edit_homework_path(@profile.user.homework_for(assignment))
+            =link_to "Edit", edit_homework_path(homework)
         -else
           %td
           %td

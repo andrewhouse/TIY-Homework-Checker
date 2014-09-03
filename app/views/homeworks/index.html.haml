@@ -11,7 +11,6 @@
         %th
           =link_to "#{assignment.date.strftime("%m/%d")} - #{assignment.title}", assignment_path(assignment)
 
-
   %tbody
     -@users.each do |user|
       %tr
@@ -20,13 +19,15 @@
           = link_to "#{user.first_name} #{user.last_name}", profile_path(user.profile)
         - @assignments.sort_by{|a| a.date}.each do |assignment|
           %td
-            - if user.homework_for(assignment) != nil
-              - if user.homework_for(assignment).finished?
+            - homework = @table[user.id][assignment.id]
+            - if homework != nil
+              - if homework.finished?
                 %span.label.label-success
-                  = link_to "Ok", user.homework_for(assignment).url
+                  = link_to "Ok", homework.url
               -else
                 %span.label.label-warning
-                  = link_to "No", user.homework_for(assignment).url
+                  = link_to "No", homework.url
+= @table
 
 -if user_signed_in?
   = link_to t('.new', :default => t("Update Homework Progress")), new_homework_path, :class => 'btn btn-primary'
