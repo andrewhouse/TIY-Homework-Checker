@@ -18,4 +18,5 @@
 //= require jquery-ui/position
 //= require jquery-ui/tooltip
 //= require jquery-ui/datepicker
+//= require jquery-ui/accordion
 //= require_tree .
