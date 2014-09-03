@@ -20,7 +20,7 @@
         %td= link_to image_tag(user.gravatar_url, size: '50', class: 'avatar'), user.profile
         %td= link_to "#{user.first_name} #{user.last_name}", profile_path(user.profile), class: 'caption'
         - @assignments.each do |assignment|
-          -if assignment.date.strftime("%B") == params[:month]
+          -if assignment.date.strftime("%B") == @sort
             %td
               - homework = @table[user.id][assignment.id]
               - if homework != nil
