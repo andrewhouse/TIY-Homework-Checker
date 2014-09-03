@@ -18,7 +18,7 @@
         %td
           =image_tag user.gravatar_url, size: '50'
           = link_to "#{user.first_name} #{user.last_name}", profile_path(user.profile)
-        - @assignments.each do |assignment|
+        - @assignments.sort_by{|a| a.date}.each do |assignment|
           %td
             - if user.homework_for(assignment) != nil
               - if user.homework_for(assignment).finished?
