@@ -29,23 +29,3 @@
                   = link_to "No", homework.url
             - elsif user == current_user
               = link_to "Update", new_homework_path, class: 'update'
-
--if user_signed_in?
-  = link_to t('.new', :default => t("Update Homework Progress")), new_homework_path, :class => 'btn btn-primary'
-
-
-  -#   %tbody
-  -#     - @homeworks.each do |homework|
-  -#       %tr
-  -#         %td= link_to "#{homework.user[:first_name]} #{homework.user[:last_name]}", homework_path(homework)
-  -#         %td
-  -#           -if homework.finished?
-  -#             %span.label.label-success
-  -#               = link_to "Complete", homework.link_to_homework
-  -#           -else
-  -#             %span.label.label-warning
-  -#               Incomplete
-  -#
-  -#
-  -# -if user_signed_in?
-  -#   = link_to t('.new', :default => t("Post Assignment")), new_homework_path, :class => 'btn btn-primary'
