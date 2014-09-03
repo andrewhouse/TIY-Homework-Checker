@@ -5,6 +5,7 @@
     = render '/layouts/navbar'
     .container
       / FIXME: = bootstrap_flash
+      %p#notice = notice
       = yield
 
       %footer
