@@ -2,7 +2,7 @@
   .form-inputs
     = f.input :link_to_homework, placeholder: "URL to Homework Assignment", required: true
     = f.input :finished, as: :boolean, checked_value: true, unchecked_value: false, label: "Are you Finished? (Check for Yes)"
-    = f.association :assignment, collection: @assignments, label_method: :description_with_date, required: true
+    = f.association :assignment, collection: @assignments.sort_by{|a| a.date }, label_method: :description_with_date, required: true
     .form-actions
       = f.button :submit, :class => 'btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), homeworks_path, :class => 'btn btn-danger'
