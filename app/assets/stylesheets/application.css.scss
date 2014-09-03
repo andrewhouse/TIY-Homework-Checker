@@ -23,6 +23,7 @@ div.container {
 
 @import 'nav';
 
+// login button for homepage when not logged in
 .button {
   @include button(shiny, #ff0000);
   @include size(50%);

@@ -1,0 +1,7 @@
+table {
+  @include outer-container
+  @include span-columns(12);
+  @include row(table);
+  @include span-columns(4);
+  @include pad();
+}

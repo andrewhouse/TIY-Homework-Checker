@@ -43,10 +43,14 @@ class User < ActiveRecord::Base
   end
 
   def blog_url
-    if blog.include?('http://')
-      blog
+    if self.try(:blog)
+      if blog.include?('http://')
+        blog
+      else
+        "http://#{blog}"
+      end
     else
-      "http://#{blog}"
+      ""
     end
   end
 
