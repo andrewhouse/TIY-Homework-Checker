@@ -8,7 +8,7 @@
       %th
       - @assignments.each do |assignment|
         %th
-          =link_to "#{assignment.date.strftime("%m/%d")} - #{assignment.title}", assignment_path(assignment), title: assignment.description, class: 'ass'
+          =link_to "#{assignment.date.strftime("%m/%d")}", assignment_path(assignment), title: assignment.title, class: 'ass'
 
   %tbody
     -@users.each do |user|
