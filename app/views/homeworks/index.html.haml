@@ -20,10 +20,11 @@
             - homework = @table[user.id][assignment.id]
             - if homework != nil
               - if homework.finished?
-                %span.label.label-success
-                  = link_to "Ok", homework.url
+                = link_to homework.url do
+                  %i.fa.fa-check
               -else
-                %span.label.label-warning
-                  = link_to "No", homework.url
+                = link_to homework.url do
+                  %i.fa.fa-minus
             - elsif user == current_user
-              = link_to "Update", new_homework_path(form: assignment), class: 'update'
+              = link_to new_homework_path(form: assignment), class: 'update' do
+                %i.fa.fa-pencil
