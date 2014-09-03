@@ -6,7 +6,7 @@ class HomeworksController < ApplicationController
   # GET /homeworks.json
   def index
     @homeworks = Homework.includes(:assignments, :users)
-    @assignments = Assignment.includes(:users)
+    @assignments = Assignment.includes(:users).order("date asc")
     @users = User.includes(:assignments)
     @table = {}
 

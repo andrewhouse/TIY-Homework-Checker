@@ -1,23 +1,21 @@
 -# TODO add searching/sorting
--# TODO make this not look like shit
-- model_class = Homework
 .page-header
   %h1=t '.title', :default => "All Homework"
-%table.table.table-striped
+%table.table
   %thead
     %tr
-      %th= model_class.human_attribute_name("Owner")
-      -@assignments.sort_by{|a| a.date}.each do |assignment|
+      %th
+      %th
+      - @assignments.each do |assignment|
         %th
           =link_to "#{assignment.date.strftime("%m/%d")} - #{assignment.title}", assignment_path(assignment), title: assignment.description, class: 'ass'
 
   %tbody
     -@users.each do |user|
       %tr
-        %td
-          =image_tag user.gravatar_url, size: '50'
-          = link_to "#{user.first_name} #{user.last_name}", profile_path(user.profile)
-        - @assignments.sort_by{|a| a.date}.each do |assignment|
+        %td= image_tag user.gravatar_url, size: '50', class: 'avatar'
+        %td= link_to "#{user.first_name} #{user.last_name}", profile_path(user.profile), class: 'caption'
+        - @assignments.each do |assignment|
           %td
             - homework = @table[user.id][assignment.id]
             - if homework != nil
