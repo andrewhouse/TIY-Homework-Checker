@@ -23,7 +23,7 @@
       - homework = @table[@profile.user.id][assignment.id]
       %tr
         %td
-          =link_to assignment.date.strftime("%m/%d"), assignment_path(assignment)
+          =link_to assignment.date.strftime("%m/%d"), assignment_path(assignment), title: assignment.title, class: 'ass'
         %td
           - if homework != nil
             - if homework.finished?
