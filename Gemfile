@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'httparty'
 gem 'gravtastic'
 gem 'redcarpet'
+gem 'jquery-ui-rails'
 
 gem 'omniauth'
 gem 'omniauth-github'

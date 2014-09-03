@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/core
+//= require jquery-ui/widget
+//= require jquery-ui/mouse
+//= require jquery-ui/position
+//= require jquery-ui/tooltip
+//= require jquery-ui/datepicker
 //= require_tree .
-//TODO add javascript widget for assignment date
