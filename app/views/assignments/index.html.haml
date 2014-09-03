@@ -8,7 +8,7 @@
       %th Destroy Assignment
 
   %tbody
-    - @assignments.each do |assignment|
+    - @assignments.sort_by{ |a| a.date }.each do |assignment|
       %tr
         %td
           = link_to assignment.date, edit_assignment_path(assignment)
