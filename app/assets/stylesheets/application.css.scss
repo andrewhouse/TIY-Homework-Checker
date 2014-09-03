@@ -46,3 +46,14 @@ div.container {
   border-radius: 25px;
   margin: 1em;
 }
+
+.month {
+  text-align: center;
+  width: 100%;
+  .monthbtn{
+    @include button(shiny, $blue);
+    &:hover{
+      color: lighten($blue, 10);
+    }
+  }
+}

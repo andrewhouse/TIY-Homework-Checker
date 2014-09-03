@@ -1,30 +1,35 @@
 -# TODO add searching/sorting
 .page-header
   %h1=t '.title', :default => "All Homework"
+.month
+  - @months.each do |month|
+    = link_to month, homeworks_path(month: month), class: 'monthbtn'
 %table.table
   %thead
     %tr
       %th
       %th
       - @assignments.each do |assignment|
-        %th
-          =link_to "#{assignment.date.strftime("%m/%d")}", assignment_path(assignment), title: assignment.title, class: 'ass'
+        -if assignment.date.strftime("%B") == @sort
+          %th
+            =link_to "#{assignment.date.strftime("%m/%d")}", assignment_path(assignment), title: assignment.title, class: 'ass'
 
   %tbody
     -@users.each do |user|
       %tr
-        %td= image_tag user.gravatar_url, size: '50', class: 'avatar'
+        %td= link_to image_tag(user.gravatar_url, size: '50', class: 'avatar'), user.profile
         %td= link_to "#{user.first_name} #{user.last_name}", profile_path(user.profile), class: 'caption'
         - @assignments.each do |assignment|
-          %td
-            - homework = @table[user.id][assignment.id]
-            - if homework != nil
-              - if homework.finished?
-                = link_to homework.url do
-                  %i.fa.fa-check
-              -else
-                = link_to homework.url do
-                  %i.fa.fa-minus
-            - elsif user == current_user
-              = link_to new_homework_path(form: assignment), class: 'update' do
-                %i.fa.fa-pencil
+          -if assignment.date.strftime("%B") == params[:month]
+            %td
+              - homework = @table[user.id][assignment.id]
+              - if homework != nil
+                - if homework.finished?
+                  = link_to homework.url do
+                    %i.fa.fa-check
+                -else
+                  = link_to homework.url do
+                    %i.fa.fa-minus
+              - elsif user == current_user
+                = link_to new_homework_path(form: assignment), class: 'update' do
+                  %i.fa.fa-pencil

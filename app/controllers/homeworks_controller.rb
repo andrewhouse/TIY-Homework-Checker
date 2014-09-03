@@ -15,6 +15,12 @@ class HomeworksController < ApplicationController
       @table[hw.user_id] ||= {}
       @table[hw.user_id][hw.assignment_id] = hw
     end
+    @months = []
+    Assignment.order("date asc").find_each do |assignment|
+      @months << assignment.date.strftime("%B")
+    end
+    @months.uniq!
+    @sort = params[:month] || Time.now.strftime("%B")
   end
 
   # GET /homeworks/1
