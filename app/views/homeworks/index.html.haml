@@ -9,7 +9,7 @@
       %th= model_class.human_attribute_name("Owner")
       -@assignments.sort_by{|a| a.date}.each do |assignment|
         %th
-          =link_to assignment.date.strftime("%m/%d"), assignment_path(assignment)
+          =link_to "#{assignment.date.strftime("%m/%d")} - #{assignment.title}", assignment_path(assignment)
 
 
   %tbody
@@ -18,6 +18,7 @@
         %td
           =image_tag user.gravatar_url, size: '50'
           = link_to "#{user.first_name} #{user.last_name}", profile_path(user.profile)
+        / FIXME! need to be sure we're iterating the columns in the same order as the header, otherwise this table could be very misleading
         - @assignments.each do |assignment|
           %td
             - if user.homework_for(assignment) != nil
