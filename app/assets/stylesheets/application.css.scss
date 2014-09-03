@@ -50,6 +50,7 @@ div.container {
 .month {
   text-align: center;
   width: 100%;
+  @include margin (null null 2% null);
   .monthbtn{
     @include button(shiny, $blue);
     &:hover{
