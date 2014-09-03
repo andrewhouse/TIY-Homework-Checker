@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20140903114824) do
 
   create_table "assignments", force: true do |t|
     t.date     "date"
-    t.text     "description"
+    t.text     "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
