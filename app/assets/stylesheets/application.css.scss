@@ -30,3 +30,10 @@ div.container {
   margin: 20%;
   font-size: 3em;
 }
+
+.update {
+  @include button(pill, $blue);
+  &:hover{
+    color: lighten($blue, 10);
+  }
+}

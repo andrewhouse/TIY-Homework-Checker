@@ -27,7 +27,8 @@
               -else
                 %span.label.label-warning
                   = link_to "No", homework.url
-= @table
+            - elsif user == current_user
+              = link_to "Update", new_homework_path, class: 'update'
 
 -if user_signed_in?
   = link_to t('.new', :default => t("Update Homework Progress")), new_homework_path, :class => 'btn btn-primary'
