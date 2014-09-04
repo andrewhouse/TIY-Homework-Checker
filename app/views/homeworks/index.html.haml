@@ -56,10 +56,10 @@
           %td{"ng-repeat" => "assignment in queries.assignments | filter:date_filter",
               "ng-init" => "hw = queries.table[user.id][assignment.id]"}
             %a.ass{"ng-if" => "hw.finished", "href" => "{{hw.url}}","title" => "Finished", "tooltip" => ''}
-              %i.fa.fa-check
+              %i.fa.fa-check.complete
             %a.ass{"ng-if" => "hw.finished === false", "href" => "{{hw.url}}","title" => "Incomplete", "tooltip" => ''}
-              %i.fa.fa-minus
+              %i.fa.fa-minus.incomplete
             %a.ass{"ng-if" => "hw.user_id == user.id && hw.finished === false", "href" => "{{hw.homework_path}}","title" => "Edit", "tooltip" => ''}
-              %i.fa.fa-pencil
+              %i.fa.fa-pencil.update
             %a.ass{"ng-if" => "hw.finished === nil && queries.current_user.id === user.id", "href" => "/homeworks/new?form={{assignment.id}}","title" => "Update", "tooltip" => ''}
-              %i.fa.fa-pencil
+              %i.fa.fa-pencil.update

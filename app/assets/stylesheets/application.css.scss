@@ -20,7 +20,8 @@
 @import 'base/grid-settings';
 @import 'neat';
 @import 'base/base';
-
+$green: #266A2E;
+$red: #990000;
 div.container {
   @include outer-container;
 }
@@ -57,4 +58,23 @@ div.container {
       color: lighten($blue, 10);
     }
   }
+}
+
+.complete {
+  @include button(pill, $green);
+  &:hover{
+    color: lighten($green, 10);
+  }
+}
+
+.incomplete {
+  @include button(pill, $red);
+  &:hover{
+    color: lighten($red, 10);
+  }
+}
+
+.ass {
+  display:block;
+  @include margin(null null 2% null);
 }
