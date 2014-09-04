@@ -18,4 +18,12 @@ class Assignment < ActiveRecord::Base
   def description_with_date
     "#{self.date}: #{self.description}"
   end
+
+  def url
+    "/assignments/#{self.id}"
+  end
+
+  def as_json *args
+    super.merge url: url
+  end
 end

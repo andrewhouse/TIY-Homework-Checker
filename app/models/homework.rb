@@ -26,4 +26,12 @@ class Homework < ActiveRecord::Base
       "http://#{link_to_homework}"
     end
   end
+
+  def homework_path
+    "/homeworks/#{self.id}"
+  end
+
+  def as_json *args
+    super.merge({url: url, homework_path: homework_path})
+  end
 end

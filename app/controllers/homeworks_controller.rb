@@ -21,6 +21,18 @@ class HomeworksController < ApplicationController
     end
     @months.uniq!
     @sort = params[:month] || Time.now.strftime("%B")
+
+    @json_return ={
+      assignments: @assignments,
+      users: @users,
+      table: @table,
+      current_user: current_user
+    }
+
+    respond_to do |format|
+      format.json {render json: @json_return }
+      format.html {render :index}
+    end
   end
 
   # GET /homeworks/1

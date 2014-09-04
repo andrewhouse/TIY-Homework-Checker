@@ -1,35 +1,65 @@
 -# TODO add searching/sorting
 .page-header
   %h1=t '.title', :default => "All Homework"
-.month
-  - @months.each do |month|
-    = link_to month, homeworks_path(month: month), class: 'monthbtn'
-%table.table
-  %thead
-    %tr
-      %th
-      %th
-      - @assignments.each do |assignment|
-        -if assignment.date.strftime("%B") == @sort
-          %th
-            =link_to "#{assignment.date.strftime("%m/%d")}", assignment_path(assignment), title: assignment.title, class: 'ass'
+-# .month
+-#   - @months.each do |month|
+-#     = link_to month, homeworks_path(month: month), class: 'monthbtn', :data => {month: month}
+-# %table.table
+-#   %thead
+-#     %tr
+-#       %th
+-#       %th
+-#       - @assignments.each do |assignment|
+-#         -if assignment.date.strftime("%B") == @sort
+-#           %th
+-#             =link_to "#{assignment.date.strftime("%m/%d")}", assignment_path(assignment), title: assignment.title, class: 'ass'
+-#
+-#   %tbody
+-#     -@users.each do |user|
+-#       %tr
+-#         %td= link_to image_tag(user.gravatar_url, size: '50', class: 'avatar'), user.profile
+-#         %td= link_to "#{user.first_name} #{user.last_name}", profile_path(user.profile), class: 'caption'
+-#         - @assignments.each do |assignment|
+-#           -if assignment.date.strftime("%B") == @sort
+-#             %td
+-#               - homework = @table[user.id][assignment.id]
+-#               - if homework != nil
+-#                 - if homework.finished?
+-#                   = link_to homework.url do
+-#                     %i.fa.fa-check
+-#                 -else
+-#                   = link_to homework.url do
+-#                     %i.fa.fa-minus
+-#               - elsif user == current_user
+-#                 = link_to new_homework_path(form: assignment), class: 'update' do
+-#                   %i.fa.fa-pencil
 
-  %tbody
-    -@users.each do |user|
-      %tr
-        %td= link_to image_tag(user.gravatar_url, size: '50', class: 'avatar'), user.profile
-        %td= link_to "#{user.first_name} #{user.last_name}", profile_path(user.profile), class: 'caption'
-        - @assignments.each do |assignment|
-          -if assignment.date.strftime("%B") == @sort
-            %td
-              - homework = @table[user.id][assignment.id]
-              - if homework != nil
-                - if homework.finished?
-                  = link_to homework.url do
-                    %i.fa.fa-check
-                -else
-                  = link_to homework.url do
-                    %i.fa.fa-minus
-              - elsif user == current_user
-                = link_to new_homework_path(form: assignment), class: 'update' do
-                  %i.fa.fa-pencil
+
+.angular-test{"ng-app" => 'table'}
+  %div{"ng-controller" => "TableCtrl"}
+    %input{"type" => "text", "ng-model" => "search"}
+    %table.table
+      %thead
+        %tr
+          %th
+          %th
+          %th{"ng-repeat" => "assignment in queries.assignments | filter:date_filter "}
+            %a.ass{ "href" => "{{assignment.url}}", "title" => "{{assignment.title}}", "tooltip" => '' }
+              {{assignment.date | date : "M/dd" }}
+      %tbody
+        %tr{"ng-repeat" => "user in queries.users"}
+          %td
+            %img.avatar{"ng-src" => "{{user.grav}}"}
+          %td
+            %a{"href" => "{{user.profile_url}}"}
+              {{user.first_name}} {{user.last_name}}
+          %td{"ng-repeat" => "assignment in queries.assignments | filter:date_filter",
+              "ng-init" => "hw = queries.table[user.id][assignment.id]"}
+            %a.ass{"ng-if" => "hw.finished", "href" => "{{hw.url}}","title" => "Finished", "tooltip" => ''}
+              %i.fa.fa-check
+            %a.ass{"ng-if" => "hw.finished === false", "href" => "{{hw.url}}","title" => "Incomplete", "tooltip" => ''}
+              %i.fa.fa-minus
+            %a.ass{"ng-if" => "hw.user_id == user.id && hw.finished === false", "href" => "{{hw.homework_path}}","title" => "Edit", "tooltip" => ''}
+              %i.fa.fa-pencil
+            %a.ass{"ng-if" => "hw.finished === nil && queries.current_user.id === user.id", "href" => "/homeworks/new?form={{assignment.id}}","title" => "Update", "tooltip" => ''}
+              %i.fa.fa-pencil

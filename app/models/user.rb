@@ -58,6 +58,19 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def grav
+    self.gravatar_url(size: '50')
+  end
+
+  def profile_url
+    "/profiles/#{profile.id}"
+  end
+
+  def as_json *args
+    super.merge ({grav: grav, profile_url: profile_url})
+  end
+
+
   private
 
   def create_profile
