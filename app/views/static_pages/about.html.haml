@@ -3,17 +3,13 @@
     About The Iron Yard Homework App
   %h3
     This app was designed in mind for The Iron Yard students to let the teachers know if their homework had been completed. It also leaves a spot to ask for help or leave comments on the assignment.
-    / NB - you have an h3 nested inside an h3 here ... that seems odd
-    %h3= link_to "If you want to see the code.", 'https://github.com/andrewhouse/TIY-Homework-Checker'
-  / NB - I don't think you need link here ... there isn't an obvious next action from this page, and you can always get to the homework from the global nav bar
-  %a{class: 'btn btn-primary btn-lg', role: 'button', href: homeworks_path}
-    To The Homework!
+  %h3= link_to "If you want to see the code.", 'https://github.com/andrewhouse/TIY-Homework-Checker'
 
 .jumbotron
   %h1
     Contact Us
   %h3
     The best way to contact anyone is through HipChat. I am @AndrewHouse, you can also ask @JamesDabbs.
-  %p
-    %a{class: 'btn btn-primary btn-lg', role: 'button', href: homeworks_path}
-      To The Homework!
+  %br
+  %a.update{role: 'button', href: homeworks_path}
+    View The Homework!

@@ -1,17 +1,7 @@
 -unless current_user.try(:blog)
   %h3
-    = link_to "Add Your Blog!", edit_user_registration_path, class: 'btn btn-warning btn-lg'
-
--@users.sort_by{ |user| user[:first_name] }.each do |user|
-  -if user.blog
-    .panel.panel-success.well
-      .panel-heading
-        %h3.panel-title
-          ="#{user.first_name} #{user.last_name}"
-      .panel-body
-        -if user.blog.include?('http://')
-          %h4.btn.btn-info
-            = link_to "#{user.blog.gsub('http://', "")}", user.blog
-        -else
-          %h4.btn.btn-info
-            = link_to "#{user.blog}", "http://#{user.blog}"
+    = link_to "Add Your Blog!", edit_user_registration_path, class: "update"
+.outer
+  -@users.sort_by{ |user| user[:first_name] }.each do |user|
+    -if user.blog
+      .inner.ass= link_to image_tag(user.gravatar_url, size: '200', class: 'avatar'), user.blog_url, title: "#{user.name}: #{user.blog}"

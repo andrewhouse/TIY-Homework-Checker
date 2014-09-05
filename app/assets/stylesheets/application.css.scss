@@ -78,3 +78,11 @@ div.container {
   display:block;
   @include margin(null null 2% null);
 }
+
+.outer {
+  @include outer-container;
+  .inner {
+    @include span-columns(4);
+    @include margin(4% 1% null 1%)
+  }
+}
