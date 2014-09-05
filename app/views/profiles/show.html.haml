@@ -31,11 +31,9 @@
         %td
           - if homework != nil
             - if homework.finished?
-              %span.label.label-success
-                = link_to "Finished", homework.url
+              %i.fa.fa-check.complete= link_to " Finished", homework.url
             -else
-              %span.label.label-warning
-                = link_to "Incomplete", homework.url
+              %i.fa.fa-minus.incomplete= link_to " Incomplete", homework.url
           - elsif @profile.user == current_user
             = link_to "Update", new_homework_path(form: assignment), class: 'update'
         -if @profile.user == current_user && !homework.blank?
