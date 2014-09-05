@@ -8,9 +8,9 @@
     %h5
       = @profile.user.email
     %h5
-      = link_to @profile.user.blog, @profile.user.blog_url
+      .ass= link_to @profile.user.blog, @profile.user.blog_url, title: "#{@profile.user.name}'s Blog"
     %h5
-      = link_to "Github Repo", "http://github.com/#{@profile.user.gh_name}"
+      .ass= link_to @profile.user.gh_name, "http://github.com/#{@profile.user.gh_name}", title: "Github Account"
   .inner2
     .center.ass= link_to image_tag("http://theironyard.com/images/iron-yard-logo.svg", alt: "The Iron Yard"), "http://theironyard.com", title: "The Iron Yard"
 
