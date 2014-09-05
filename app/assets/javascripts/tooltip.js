@@ -13,12 +13,6 @@ function jqAccordion(){
   $('#accordion').accordion({active: false, collapsible: true});
 }
 
-function test(){
-  $(".monthbtn").on('click', 'a', function(){
-  })
-}
-
-
 function documentLoad(){
   jqToolTip();
   jqDatePicker();
