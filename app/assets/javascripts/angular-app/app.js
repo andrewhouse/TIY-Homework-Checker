@@ -28,8 +28,10 @@ angular.module('table', ['ngResource']).
       return true; // search title
     } else if (assignment.lowdescription.indexOf(lowercase) > -1){
       return true; // search description
+    } else if ("all".indexOf(lowercase) > -1){
+      return true; // filter it out
     } else {
-      return false; // filter it out
+      return false;
     }
   }
 
