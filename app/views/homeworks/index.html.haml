@@ -37,7 +37,7 @@
 
 .angular-test{"ng-app" => 'table'}
   %div{"ng-controller" => "TableCtrl"}
-    %input{"type" => "text", "ng-model" => "search"}
+    %input{"type" => "text", "ng-model" => "search", "ng-model-options"=>"{debounce: { default: 500, blur: 1 }}"}
     %table.table
       %thead
         %tr
