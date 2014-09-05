@@ -83,6 +83,25 @@ div.container {
   @include outer-container;
   .inner {
     @include span-columns(4);
-    @include margin(4% 1% null 1%)
+    @include margin(4% 1% null 1%);
+    .center {
+      float: right;
+    }
   }
+  .bg{
+    text-align: center;
+    @include border-top-radius(1%);
+    @include border-bottom-radius(5px);
+    @include border-left-radius(5px);
+    @include border-right-radius(5px);
+    @include background-image(linear-gradient(hsla(0, 100%, 100%, 0.25) 0%, hsla(0, 100%, 100%, 0.08) 50%, transparent 50%),
+                           linear-gradient($blue, darken(#4e7ba4, 10%)));
+    color: lightgray;
+      a{
+        color: lightgray;
+        &:hover{
+          color: lighten(lightgray, 10)
+              }
+        }
+    }
 }

@@ -1,15 +1,18 @@
 -# TODO make get rid of bootstrap stylings and use bourbon
-.span4=image_tag @profile.user.gravatar_url, class: 'center-block'
-.span5
-  .panel.panel-success.well
-    .panel-heading
-      %h4="#{@profile.user.first_name} #{@profile.user.last_name}"
-      %hr
-    .panel-body
-      %h5= @profile.user.email
-      %h5=link_to @profile.user.blog, @profile.user.blog_url
-      %h5
-        = link_to "Github Repo", "http://github.com/#{@profile.user.gh_name}"
+.outer
+  .inner
+    .ass=image_tag @profile.user.gravatar_url, class: 'center-block avatar', title: "#{@profile.user.name}"
+  .inner.bg
+    %h4
+      ="#{@profile.user.first_name} #{@profile.user.last_name}"
+    %h5
+      = @profile.user.email
+    %h5
+      = link_to @profile.user.blog, @profile.user.blog_url
+    %h5
+      = link_to "Github Repo", "http://github.com/#{@profile.user.gh_name}"
+  .inner
+    .center= link_to image_tag("http://theironyard.com/images/iron-yard-logo.svg", alt: "The Iron Yard"), "http://theironyard.com"
 
 %table.table.table-striped
   %thead
