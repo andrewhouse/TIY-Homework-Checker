@@ -1,17 +1,36 @@
 - model_class = Homework
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
 
+%h1
+  = @assignment.title
+%p
+  submitted by:
+  =link_to @homework.user.name, profile_path(@homework.user.profile)
+
+%p
+  %b Date:
+  = @assignment.date
+%p
+  %b Description:
+  = markdown @assignment.description
 %p
   %strong= model_class.human_attribute_name(:link_to_homework) + ':'
   %br
-  = @homework.link_to_homework
+  = link_to @homework.link_to_homework, @homework.url
 %p
   %strong= model_class.human_attribute_name(:finished?) + ':'
   %br
-  = @homework.finished?
-
-.form-actions
-  = link_to t('.back', :default => t("Homework Page")), homeworks_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_homework_path(@homework), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), homework_path(@homework), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  - if @homework != nil
+    - if @homework.finished?
+      = link_to @homework.url do
+        %i.fa.fa-check.complete
+    -else
+      = link_to @homework.url do
+        %i.fa.fa-minus.incomplete
+  - elsif @homework.user == current_user
+    = link_to new_homework_path(form: assignment), class: 'update' do
+      %i.fa.fa-pencil.update
+-if current_user == @homework.user
+  .form-actions
+    = link_to t('.back', :default => t("Homework Page")), homeworks_path, :class => 'btn'
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_homework_path(@homework), :class => 'btn'
+    = link_to t('.destroy', :default => t("helpers.links.destroy")), homework_path(@homework), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

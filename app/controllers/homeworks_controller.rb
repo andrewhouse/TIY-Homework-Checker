@@ -38,7 +38,7 @@ class HomeworksController < ApplicationController
   # GET /homeworks/1
   # GET /homeworks/1.json
   def show
-    redirect_to homeworks_path unless @homework.user_id == current_user.id
+    @assignment = @homework.assignment
   end
 
   # GET /homeworks/new

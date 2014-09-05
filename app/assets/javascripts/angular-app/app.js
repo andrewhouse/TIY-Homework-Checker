@@ -20,13 +20,6 @@ angular.module('table', ['ngResource']).
   $scope.date_filter = function(assignment) {
     if (!$scope.search) { return false; }
     lowercase = $scope.search.toLowerCase();
-    // title = assignment.title.toLowerCase();
-    // description = assignment.description.toLowerCase();
-    // date = new Date(assignment.date + "EDT");
-    // date_string = date.toLocaleDateString("en-US", options);
-    // date_string2 = date.toLocaleDateString("en-US", options2)
-    console.log("assignment is:", assignment);
-    console.log("search term is:", $scope.search);
     if (assignment.date_string2.indexOf($scope.search) > -1) {
       return true; //search date
     } else if (assignment.date_string.toLowerCase().indexOf(lowercase) > -1) {
