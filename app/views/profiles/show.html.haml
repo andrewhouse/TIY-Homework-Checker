@@ -17,10 +17,11 @@
 %table.table.table-striped
   %thead
     %tr
-      %th
-      %th
-      %th
-      %th
+      %th Assignment Date
+      %th Status
+      -if @profile.user == current_user
+        %th Description
+        %th Edit
   %tbody
     -@assignments.sort_by{|a| a.date}.each do |assignment|
       - homework = @table[@profile.user.id][assignment.id]
@@ -42,6 +43,4 @@
             =link_to "Description", homework_path(homework.id)
           %td
             =link_to "Edit", edit_homework_path(homework)
-        -else
-          %td
-          %td
+        
