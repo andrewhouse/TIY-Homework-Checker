@@ -9,6 +9,7 @@
   %b Description:
   = markdown @assignment.description
 
-= link_to 'Edit', edit_assignment_path(@assignment)
-\|
+-if current_user.try(:admin)
+  = link_to 'Edit', edit_assignment_path(@assignment)
+  \|
 = link_to 'Back', assignments_path
