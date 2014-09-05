@@ -43,4 +43,6 @@
             =link_to "Description", homework_path(homework.id)
           %td
             =link_to "Edit", edit_homework_path(homework)
-        
+        -elsif @profile.user == current_user
+          %td
+          %td
