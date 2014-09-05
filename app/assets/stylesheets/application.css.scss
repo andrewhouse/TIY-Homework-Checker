@@ -84,10 +84,14 @@ div.container {
   .inner {
     @include span-columns(4);
     @include margin(4% 1% null 1%);
+  }
+  .inner2 {
+    @include span-columns(2);
+    @include margin(4% 1% null 1%);
     .center {
       float: right;
+      }
     }
-  }
   .bg{
     text-align: center;
     @include border-top-radius(1%);
