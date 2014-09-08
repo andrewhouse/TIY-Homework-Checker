@@ -28,7 +28,7 @@ angular.module('table', ['ngResource']).
       return true; // search title
     } else if (assignment.lowdescription.indexOf(lowercase) > -1){
       return true; // search description
-    } else if ("all".indexOf(lowercase) > -1){
+    } else if ("all" === lowercase) {
       return true; // filter it out
     } else {
       return false;
