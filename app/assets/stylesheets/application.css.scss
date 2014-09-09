@@ -84,7 +84,7 @@ div.container {
 .outer {
   @include outer-container;
   .inner {
-    @include span-columns(3.95);
+    @include span-columns(3.75);
     @include margin(4% 1% null 1%);
   }
   .inner2 {
