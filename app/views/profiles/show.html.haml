@@ -24,7 +24,7 @@
         %th Edit
   %tbody
     -@assignments.sort_by{|a| a.date}.each do |assignment|
-      -if @table[@profile.user.id][assignment.id]
+      -if @table[@profile.user.id]
         - homework = @table[@profile.user.id][assignment.id]
       -else
         - homework = ''
@@ -32,7 +32,7 @@
         %td
           =link_to assignment.date.strftime("%m/%d"), assignment_path(assignment), title: assignment.title, class: 'ass'
         %td
-          - if homework != ''
+          - if homework != '' && homework != nil
             - if homework.finished?
               %i.fa.fa-check.complete= link_to " Finished", homework.url
             -else
