@@ -1,7 +1,8 @@
 // HOLY SHIT THIS WORK
 function commentAjax(){
   $('.post').on("ajax:success", function(e, data, status, xhr){
-    $(".comment-container").append(xhr.responseText);
+    // $(".comment-container").append(xhr.responseText);
+    console.log(xhr);
   })
   .on("ajax:error", function(e, xhr, status, error) {
     $(".post").append("<p>ERROR</p>");

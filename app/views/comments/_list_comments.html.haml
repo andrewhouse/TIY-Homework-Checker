@@ -1,5 +1,5 @@
 .comment-container
   -@comments.each do |comment|
     .comment
-      .fl.ass=image_tag(comment.user.gravatar_url, size: '150', class: 'avatar', title: comment.user.name)
-      .text=markdown comment.body
+      .fl.ass= image_tag(comment.user.gravatar_url, size: '150', class: 'avatar', title: comment.user.name)
+      .text= markdown comment.body
