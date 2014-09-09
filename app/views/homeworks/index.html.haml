@@ -60,7 +60,7 @@
               %i.fa.fa-check.complete
             %a.ass{"ng-if" => "hw.finished === false", "href" => "{{hw.url}}","title" => "Incomplete", "tooltip" => ''}
               %i.fa.fa-minus.incomplete
-            %a.ass{"ng-if" => "hw.user_id == user.id && hw.finished === false", "href" => "{{hw.homework_path}}","title" => "Edit", "tooltip" => ''}
+            %a.ass{"ng-if" => "hw.finished === false || hw.finished", "href" => "{{hw.homework_path}}","title" => "View Submission", "tooltip" => ''}
               %i.fa.fa-pencil.update
             %a.ass{"ng-if" => "hw.finished === nil && queries.current_user.id === user.id", "href" => "/homeworks/new?form={{assignment.id}}","title" => "Update", "tooltip" => ''}
               %i.fa.fa-pencil.update
