@@ -1,6 +1,17 @@
 # Add this class to be able to update devise info without password
 #   because this is using github omniauth for login
 class RegistrationsController < Devise::RegistrationsController
+   def new
+    flash[:info] = 'Please Register Through Github'
+    redirect_to user_omniauth_authorize_path(:github)
+  end
+
+  def create
+    flash[:info] = 'Please Register Through Github'
+    redirect_to user_omniauth_authorize_path(:github)
+  end
+  # Everything above is to disable user registration
+  # Everything below is to allow Update without password.
   def update
     @user = User.find(current_user.id)
 
