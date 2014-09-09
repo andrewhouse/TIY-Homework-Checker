@@ -24,7 +24,10 @@
         %th Edit
   %tbody
     -@assignments.sort_by{|a| a.date}.each do |assignment|
-      - homework = @table[@profile.user.id][assignment.id] ? @table[@profile.user.id][assignment.id] : ''
+      -if @table[@profile.user.id][assignment.id]
+        - homework = @table[@profile.user.id][assignment.id]
+      -else
+        - homework = ''
       %tr
         %td
           =link_to assignment.date.strftime("%m/%d"), assignment_path(assignment), title: assignment.title, class: 'ass'
