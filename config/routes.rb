@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments, only:[:create, :update, :destroy, :show]
+
   resources :profiles, only:[:index, :show]
 
   resources :assignments

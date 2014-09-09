@@ -1,0 +1,16 @@
+.comment-container {
+  @include outer-container;
+  margin-top: 3%;
+  .comment{
+    @include span-columns(12);
+    @include background-image(linear-gradient(hsla(0, 100%, 100%, 0.25) 0%, hsla(0, 100%, 100%, 0.08) 50%, transparent 50%),
+                           linear-gradient(white, lighten($blue, 30%)));
+    @include size(50em auto);
+    .fl{
+      float: right;
+    }
+    .text{
+      @include margin(1% 1% 1% 1%);
+    }
+  }
+}

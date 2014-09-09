@@ -37,7 +37,7 @@
           - elsif @profile.user == current_user
             = link_to "Update", new_homework_path(form: assignment), class: 'update'
           -else
-            No Homework Submitted
+            ggNo Homework Submitted
         -if @profile.user == current_user && !homework.blank?
           %td
             =link_to "Description", homework_path(homework.id)

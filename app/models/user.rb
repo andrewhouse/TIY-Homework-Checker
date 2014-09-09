@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
   has_many :homeworks
   has_many :assignments, through: :homeworks
 
+  has_many :comments
+
   has_many :identities
 
   has_one :profile

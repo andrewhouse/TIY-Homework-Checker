@@ -30,7 +30,23 @@
     = link_to new_homework_path(form: assignment), class: 'update' do
       %i.fa.fa-pencil.update
 -if current_user == @homework.user
+  %hr
   .form-actions
-    = link_to t('.back', :default => t("Homework Page")), homeworks_path, :class => 'btn'
-    = link_to t('.edit', :default => t("helpers.links.edit")), edit_homework_path(@homework), :class => 'btn'
-    = link_to t('.destroy', :default => t("helpers.links.destroy")), homework_path(@homework), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+    = link_to t('.back', :default => t("Homework Page")), homeworks_path, :class => 'complete'
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_homework_path(@homework), :class => 'update'
+    .incomplete= link_to t('.destroy', :default => t("helpers.links.destroy")), homework_path(@homework), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+%hr
+.comment-btn
+  .update Post a New Comment
+.post-comment
+  .post
+    = simple_form_for(@comment, remote: true) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.hidden_field :user_id, value: current_user.id
+        = f.hidden_field :homework_id, value: @homework.id
+        = f.input :body
+      .form-actions
+        .sub= f.button :submit
+
+= render partial: '/comments/list_comments'

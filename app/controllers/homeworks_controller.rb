@@ -39,6 +39,14 @@ class HomeworksController < ApplicationController
   # GET /homeworks/1.json
   def show
     @assignment = @homework.assignment
+    # TODO fix n+1 on comments
+    # @comments = {}
+    # @homework.comments.find_each do |comment|
+    #   @comments[comment.user_id] ||= {}
+    #   @comments[comment.user_id][comment.id] = comment
+    # end
+    @comments = @homework.comments
+    @comment = Comment.new
   end
 
   # GET /homeworks/new
