@@ -24,10 +24,7 @@
         %th Edit
   %tbody
     -@assignments.sort_by{|a| a.date}.each do |assignment|
-      -if @table[@profile.user.id]
-        - homework = @table[@profile.user.id][assignment.id]
-      -else
-        - homework = ''
+      -@table[@profile.user.id] ?  homework = @table[@profile.user.id][assignment.id] : ''
       %tr
         %td
           =link_to assignment.date.strftime("%m/%d"), assignment_path(assignment), title: assignment.title, class: 'ass'
@@ -39,6 +36,8 @@
               %i.fa.fa-minus.incomplete= link_to " Incomplete", homework.url
           - elsif @profile.user == current_user
             = link_to "Update", new_homework_path(form: assignment), class: 'update'
+          -else
+            No Homework Submitted
         -if @profile.user == current_user && !homework.blank?
           %td
             =link_to "Description", homework_path(homework.id)
