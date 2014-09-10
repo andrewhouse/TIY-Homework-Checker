@@ -4,6 +4,8 @@ function commentAjax(){
 
   $('.post').on("ajax:success", function(e, data, status, xhr){
     // $(".comment").append(xhr.responseText);
+    console.log(data)
+    console.log(e)
   })
   .on("ajax:error", function(e, xhr, status, error) {
     $(".post").append("<p>ERROR</p>");

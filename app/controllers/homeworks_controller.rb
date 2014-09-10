@@ -48,7 +48,7 @@ class HomeworksController < ApplicationController
     @comments = @homework.comments
     @comment = Comment.new
     respond_to do |format|
-      format.json { render @comments}
+      format.json {render @comments}
       format.html {render :show}
     end
   end

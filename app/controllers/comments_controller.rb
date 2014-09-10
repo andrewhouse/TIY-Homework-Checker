@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.js { @comments = Comment.all }
+        format.js { @comments = [Comment.last] }
 
         format.html { render @comment, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
