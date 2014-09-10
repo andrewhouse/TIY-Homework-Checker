@@ -47,6 +47,10 @@ class HomeworksController < ApplicationController
     # end
     @comments = @homework.comments
     @comment = Comment.new
+    respond_to do |format|
+      format.json { render @comments}
+      format.html {render :show}
+    end
   end
 
   # GET /homeworks/new

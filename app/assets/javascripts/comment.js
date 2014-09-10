@@ -1,8 +1,9 @@
 // HOLY SHIT THIS WORK
 function commentAjax(){
+  // $.ajax("/homeworks/:id")
+
   $('.post').on("ajax:success", function(e, data, status, xhr){
-    // $(".comment-container").append(xhr.responseText);
-    console.log(xhr);
+    // $(".comment").append(xhr.responseText);
   })
   .on("ajax:error", function(e, xhr, status, error) {
     $(".post").append("<p>ERROR</p>");
